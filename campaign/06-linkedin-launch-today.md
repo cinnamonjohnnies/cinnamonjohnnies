@@ -12,6 +12,10 @@ and is the fastest to stand up cleanly today.
 
 ## Where things stand right now
 
+- A LinkedIn Company Page for Checkpoint Planning needs to exist before
+  anything else here works, Sponsored Content ads require one and a
+  personal profile can't run them. See Step 0 if that Page doesn't
+  exist yet.
 - The website went to Ameritas compliance and is pending approval; no
   issues are expected, it's a matter of timing.
 - **The ad copy in `02-linkedin-ads.md` has not been separately submitted
@@ -26,6 +30,59 @@ and is the fastest to stand up cleanly today.
   pages), and a real conversion event fires in `website/script.js` on a
   successful form submission. Two placeholder IDs need to be filled in
   before anything will actually track, see Step 1 below.
+
+## Step 0: Set up a LinkedIn Company Page
+
+LinkedIn Sponsored Content, the ad format this whole plan is built
+around, can only run through a **Company Page**. A personal profile,
+even one built and used for the business, cannot be the identity behind
+a Sponsored Content ad; Campaign Manager requires a Page to attach the
+campaign to. This is a one-time setup, not a recurring step.
+
+1. Log into your existing personal LinkedIn profile (no new personal
+   account needed, this stays as-is).
+2. Click the **For Business** icon (grid icon, top right), scroll to
+   **Create a Company Page**, or go directly to
+   `linkedin.com/company/setup/new/`.
+3. Choose **Small business** as the Page type (the other options,
+   Medium/Large business, Showcase Page, Educational institution, don't
+   fit a solo practice).
+4. Fill in the required fields:
+   - **Page name:** Checkpoint Planning
+   - **LinkedIn public URL:** claim `linkedin.com/company/checkpoint-planning`
+     if available, otherwise the closest variant
+   - **Website:** `https://checkpointplanning.com` (or the live
+     `start.checkpointplanning.com` URL if that's what's public right now)
+   - **Industry:** Financial Services (or Financial Planning, if offered
+     as a more specific option)
+   - **Company size:** 1-10 employees, or Self-employed
+   - **Company type:** Self-employed or Privately Held
+   - **Logo:** use `website/assets/checkpoint-logo-mark.png` (the square
+     icon mark reproduces better at LinkedIn's small logo size than the
+     full wordmark)
+   - **Tagline:** "Financial Clarity for Life's In-Betweens", already the
+     site's tagline, keep it consistent
+5. Check the box confirming you're authorized to act on the
+   organization's behalf, then **Create page**. You're automatically
+   the Page's Super Admin.
+6. Fill out the **About** section before running any ads against it,
+   since curious clickers will visit the Page itself. Include the same
+   disclosure language used in the site footer (business names, FINRA/
+   SIPC, not affiliated with Capstone Financial Group). This is public
+   marketing material too, worth a quick compliance glance alongside the
+   ad copy in Step 5, even though it's lower-risk than the ads
+   themselves.
+7. Add a cover image and at least one post (even just introducing the
+   practice) so the Page doesn't look empty when someone clicks through
+   from an ad out of curiosity.
+8. Back in [LinkedIn Campaign Manager](https://www.linkedin.com/campaignmanager/),
+   when you create the ad account (or edit an existing one), set this
+   new Page as the account's **associated Page**. This is what makes
+   Sponsored Content available as a format, everything in Step 3 below
+   depends on this being set.
+
+No minimum follower count or waiting period is required before running
+ads from a brand-new Page.
 
 ## Step 1: Fill in the two LinkedIn IDs (do this first)
 

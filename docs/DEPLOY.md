@@ -1,15 +1,24 @@
 # Deploying to start.checkpointplanning.com
 
 This covers going live on a new subdomain (`start.checkpointplanning.com`)
-while `checkpointplanning.com` stays untouched. The site is fully static —
-any host that serves plain files works. Pick whichever matches how you
-already manage checkpointplanning.com's DNS/hosting.
+while `checkpointplanning.com` stays untouched for now. The site is fully
+static — any host that serves plain files works. Pick whichever matches how
+you already manage checkpointplanning.com's DNS/hosting.
+
+The site now includes the full "base" site — Home, About, Services, Our
+Process, Fees, and Contact — built to match your real branding (logo, icon
+mark, CRPC badge), plus the four transition landing pages (Job Loss,
+Early Retirement, Divorce, Inheritance). Once this clears compliance
+review, you can either keep it running at the subdomain permanently, or
+swap the DNS so it becomes the new checkpointplanning.com — same files,
+just a later decision.
 
 ## Step 1 — Upload the files
 
 Download `checkpoint-planning-website.zip` (sent alongside this doc) and
-unzip it. It contains everything in `website/`: five HTML pages, `styles.css`,
-`script.js`, `assets/scott-marcoe.jpg`, and `google-apps-script/Code.gs`.
+unzip it. It contains everything in `website/`: ten HTML pages, `styles.css`,
+`script.js`, `assets/` (your logo, icon mark, CRPC badge, and headshot), and
+`google-apps-script/Code.gs`.
 
 Upload the **contents** of that folder (not the folder itself — `index.html`
 should sit at the root of whatever you upload) to your host of choice:

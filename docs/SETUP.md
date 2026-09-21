@@ -8,14 +8,19 @@ Strategy, Fees & Services, your bio, and the "Your Next Checkpoint" workbook).
 
 ```
 website/                    Static site (HTML/CSS/JS, no build step)
-  index.html                 Main homepage
+  index.html                 Homepage
+  about.html                  About Scott + extended team
+  services.html                Full services menu + links to transition pages
+  process.html                 The Checkpoint Strategy + Working Together timeline
+  fees.html                    Planning packages + AUM fee schedule
+  contact.html                  Contact form + full FAQ + map
   job-loss.html               Job Loss & Layoff landing page
   early-retirement.html       Early Retirement landing page
   divorce.html                 Divorce landing page
   inheritance.html            Inheritance & Unexpected Wealth landing page
   styles.css                   Shared brand styles
   script.js                    Lead form handling (posts to Google Sheets)
-  assets/scott-marcoe.jpg      Your headshot
+  assets/                       Your real logo, icon mark, CRPC badge, and headshot
   google-apps-script/Code.gs   Backend script that writes form leads to Google Sheets
 
 lead-magnets/                Downloadable guides used as opt-in incentives

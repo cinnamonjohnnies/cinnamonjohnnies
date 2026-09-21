@@ -16,6 +16,11 @@ from reportlab.lib.enums import TA_CENTER
 #
 # Usage: python3 compliance/tools/build_compliance_deck.py
 
+# Email nurture sequences are being sent manually for now (automation comes later),
+# so they're left out of the compliance package until that's built. Flip this back to
+# True once the sequences are ready to submit alongside everything else.
+INCLUDE_EMAILS = False
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 WEB = os.path.join(ROOT, "website")
 OUT_DIR = os.path.join(ROOT, "compliance", "_build")
@@ -168,7 +173,10 @@ c.drawString(0.9*inch, H-4.15*inch, "Compliance Review Package")
 
 c.setFillColor(colors.HexColor("#9cc4e2"))
 c.setFont("Helvetica", 13)
-c.drawString(0.9*inch, H-4.7*inch, "Website (10 pages), 3 new lead magnets, and 4 email nurture sequences")
+_subtitle = "Website (10 pages) and 3 new lead magnets"
+if INCLUDE_EMAILS:
+    _subtitle += ", and 4 email nurture sequences"
+c.drawString(0.9*inch, H-4.7*inch, _subtitle)
 
 c.setFillColor(colors.white)
 c.setFont("Helvetica-Bold", 10)
@@ -200,9 +208,12 @@ summary_flow.append(Spacer(1, 10))
 summary_items = [
     ("1. Website — 10 pages", "Home, About, Services, Our Process, Fees, and Contact (the general site), plus four dedicated landing pages for Job Loss & Layoff, Early Retirement, Divorce, and Inheritance & Unexpected Wealth. Each page below is captured exactly as it renders live, including the footer disclosures and Form CRS links."),
     ("2. Lead magnets — 4 guides", "“Your Next Checkpoint” workbook (existing, previously produced) plus three new companion guides: Early Retirement, Divorce, and Inheritance — offered as opt-in downloads from the matching landing page."),
-    ("3. Email nurture sequences — 4 sequences, 20 emails total", "A five-email sequence for each transition (job loss, early retirement, divorce, inheritance), sent automatically after a lead magnet download, ending in an invitation to a complimentary Where We Begin session."),
-    ("4. Compliance notes", "A summary of the required disclosures included throughout (fiduciary/FINRA-SIPC language, Form CRS links for AIC and AAS, fee transparency language, “not investment advice” disclaimers) for quick reference during review."),
 ]
+if INCLUDE_EMAILS:
+    summary_items.append(
+        ("3. Email nurture sequences — 4 sequences, 20 emails total", "A five-email sequence for each transition (job loss, early retirement, divorce, inheritance), sent automatically after a lead magnet download, ending in an invitation to a complimentary Where We Begin session."))
+summary_items.append(
+    (f"{len(summary_items)+1}. Compliance notes", "A summary of the required disclosures included throughout (fiduciary/FINRA-SIPC language, Form CRS links for AIC and AAS, fee transparency language, “not investment advice” disclaimers) for quick reference during review."))
 for h, body in summary_items:
     summary_flow.append(Paragraph(h, styles["CPH2"]))
     summary_flow.append(Paragraph(body, styles["CPBody"]))
@@ -212,11 +223,20 @@ summary_flow.append(Spacer(1, 10))
 summary_flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#dde3e9")))
 summary_flow.append(Spacer(1, 8))
 summary_flow.append(Paragraph("Planned Distribution", styles["CPH2"]))
-summary_flow.append(Paragraph(
+_distribution_text = (
     "The website is planned to launch at a new subdomain (start.checkpointplanning.com) first, with checkpointplanning.com "
     "itself unchanged until this material is approved. Lead magnets are offered as gated downloads on their matching landing "
-    "page; email sequences are triggered automatically after a download via the firm's email platform. No paid advertising "
-    "is planned until this package is approved.", styles["CPBody"]))
+    "page"
+)
+if INCLUDE_EMAILS:
+    _distribution_text += "; email sequences are triggered automatically after a download via the firm's email platform"
+else:
+    _distribution_text += (
+        "; follow-up after a download is being handled manually by Scott for now, with the drafted email sequences "
+        "held for a future automation build (not included in this submission)"
+    )
+_distribution_text += ". No paid advertising is planned until this package is approved."
+summary_flow.append(Paragraph(_distribution_text, styles["CPBody"]))
 
 build_supplement(os.path.join(OUT_DIR, "01_summary.pdf"), [("flowables", summary_flow)])
 
@@ -229,10 +249,13 @@ section_divider_pdf(os.path.join(OUT_DIR, "02_divider_website.pdf"),
     "Section 1", "Website — 10 Pages (Live Render)", "Checkpoint Planning")
 section_divider_pdf(os.path.join(OUT_DIR, "04_divider_magnets.pdf"),
     "Section 2", "Lead Magnets — 4 Guides", "Checkpoint Planning")
-section_divider_pdf(os.path.join(OUT_DIR, "06_divider_emails.pdf"),
-    "Section 3", "Email Nurture Sequences — 4 Sequences", "Checkpoint Planning")
+_next_section = 3
+if INCLUDE_EMAILS:
+    section_divider_pdf(os.path.join(OUT_DIR, "06_divider_emails.pdf"),
+        f"Section {_next_section}", "Email Nurture Sequences — 4 Sequences", "Checkpoint Planning")
+    _next_section += 1
 section_divider_pdf(os.path.join(OUT_DIR, "08_divider_compliance.pdf"),
-    "Section 4", "Compliance Notes", "Checkpoint Planning")
+    f"Section {_next_section}", "Compliance Notes", "Checkpoint Planning")
 print("Dividers built")
 
 # ---------------------------------------------------------------
@@ -349,32 +372,35 @@ for out_name, md_path in new_guides:
 print("Lead magnet guide pages built")
 
 # ---------------------------------------------------------------
-# 6. Email nurture sequences (from markdown)
+# 6. Email nurture sequences (from markdown) — skipped while INCLUDE_EMAILS is False
 # ---------------------------------------------------------------
-EMAIL_DIR = os.path.join(ROOT, "email-nurture")
-email_intro_flow = [
-    Paragraph("Email Nurture Sequences", styles["CPTitle"]),
-    Paragraph(
-        "Four five-email sequences (20 emails total), one per transition. Each is triggered automatically when "
-        "a visitor downloads the matching lead magnet, spans roughly two weeks, and ends by inviting the reader "
-        "to a complimentary Where We Begin session. Merge tags like {{first_name}} are filled in by the email "
-        "platform at send time.", styles["CPBody"]),
-    Spacer(1, 6),
-]
-build_supplement(os.path.join(OUT_DIR, "07_emails_intro.pdf"), [("flowables", email_intro_flow)])
+if INCLUDE_EMAILS:
+    EMAIL_DIR = os.path.join(ROOT, "email-nurture")
+    email_intro_flow = [
+        Paragraph("Email Nurture Sequences", styles["CPTitle"]),
+        Paragraph(
+            "Four five-email sequences (20 emails total), one per transition. Each is triggered automatically when "
+            "a visitor downloads the matching lead magnet, spans roughly two weeks, and ends by inviting the reader "
+            "to a complimentary Where We Begin session. Merge tags like {{first_name}} are filled in by the email "
+            "platform at send time.", styles["CPBody"]),
+        Spacer(1, 6),
+    ]
+    build_supplement(os.path.join(OUT_DIR, "07_emails_intro.pdf"), [("flowables", email_intro_flow)])
 
-email_files = [
-    ("07b_email_job_loss.pdf", os.path.join(EMAIL_DIR, "job-loss-sequence.md")),
-    ("07c_email_early_retirement.pdf", os.path.join(EMAIL_DIR, "early-retirement-sequence.md")),
-    ("07d_email_divorce.pdf", os.path.join(EMAIL_DIR, "divorce-sequence.md")),
-    ("07e_email_inheritance.pdf", os.path.join(EMAIL_DIR, "inheritance-sequence.md")),
-]
-for out_name, md_path in email_files:
-    with open(md_path) as f:
-        md_text = f.read()
-    flow = markdown_flowables(md_text)
-    build_supplement(os.path.join(OUT_DIR, out_name), [("flowables", flow)])
-print("Email sequence pages built")
+    email_files = [
+        ("07b_email_job_loss.pdf", os.path.join(EMAIL_DIR, "job-loss-sequence.md")),
+        ("07c_email_early_retirement.pdf", os.path.join(EMAIL_DIR, "early-retirement-sequence.md")),
+        ("07d_email_divorce.pdf", os.path.join(EMAIL_DIR, "divorce-sequence.md")),
+        ("07e_email_inheritance.pdf", os.path.join(EMAIL_DIR, "inheritance-sequence.md")),
+    ]
+    for out_name, md_path in email_files:
+        with open(md_path) as f:
+            md_text = f.read()
+        flow = markdown_flowables(md_text)
+        build_supplement(os.path.join(OUT_DIR, out_name), [("flowables", flow)])
+    print("Email sequence pages built")
+else:
+    print("Skipping email sequence pages (INCLUDE_EMAILS = False)")
 
 # ---------------------------------------------------------------
 # 7. Compliance notes / disclosure checklist
@@ -387,10 +413,13 @@ notes_flow.append(Paragraph(
     styles["CPSubtitle"]))
 notes_flow.append(Spacer(1, 8))
 
+_bd_disclosure_scope = "all 10 website pages and all 4 new lead magnets"
+if INCLUDE_EMAILS:
+    _bd_disclosure_scope += ", and is referenced in email sequence documentation"
 checklist = [
     ("Business-name & broker-dealer disclosure",
-     "Present in the footer of all 10 website pages, all 4 new lead magnets, and referenced in email sequence "
-     "documentation: “Scott Marcoe offers products and services using the following business names: Checkpoint "
+     f"Present in the footer of {_bd_disclosure_scope}: "
+     "“Scott Marcoe offers products and services using the following business names: Checkpoint "
      "Planning — Capstone Financial Group, insurance and financial services | Ameritas Investment Company, LLC "
      "(AIC), Member FINRA/SIPC, securities and investments | Ameritas Advisory Services, LLC (AAS), investment "
      "advisory services. AIC and AAS are not affiliated with Capstone Financial Group.”"),
@@ -473,14 +502,15 @@ add(os.path.join(OUT_DIR, "05b_guide_early_retirement.pdf"), "Early Retirement C
 add(os.path.join(OUT_DIR, "05c_guide_divorce.pdf"), "Divorce Financial Checkpoint Guide — new", parent=magnets_bm)
 add(os.path.join(OUT_DIR, "05d_guide_inheritance.pdf"), "Inheritance Checkpoint Guide — new", parent=magnets_bm)
 
-emails_bm = add(os.path.join(OUT_DIR, "06_divider_emails.pdf"), "3. Email Nurture Sequences")
-add(os.path.join(OUT_DIR, "07_emails_intro.pdf"), "Overview", parent=emails_bm)
-add(os.path.join(OUT_DIR, "07b_email_job_loss.pdf"), "Job Loss & Layoff sequence", parent=emails_bm)
-add(os.path.join(OUT_DIR, "07c_email_early_retirement.pdf"), "Early Retirement sequence", parent=emails_bm)
-add(os.path.join(OUT_DIR, "07d_email_divorce.pdf"), "Divorce sequence", parent=emails_bm)
-add(os.path.join(OUT_DIR, "07e_email_inheritance.pdf"), "Inheritance sequence", parent=emails_bm)
+if INCLUDE_EMAILS:
+    emails_bm = add(os.path.join(OUT_DIR, "06_divider_emails.pdf"), "3. Email Nurture Sequences")
+    add(os.path.join(OUT_DIR, "07_emails_intro.pdf"), "Overview", parent=emails_bm)
+    add(os.path.join(OUT_DIR, "07b_email_job_loss.pdf"), "Job Loss & Layoff sequence", parent=emails_bm)
+    add(os.path.join(OUT_DIR, "07c_email_early_retirement.pdf"), "Early Retirement sequence", parent=emails_bm)
+    add(os.path.join(OUT_DIR, "07d_email_divorce.pdf"), "Divorce sequence", parent=emails_bm)
+    add(os.path.join(OUT_DIR, "07e_email_inheritance.pdf"), "Inheritance sequence", parent=emails_bm)
 
-notes_bm = add(os.path.join(OUT_DIR, "08_divider_compliance.pdf"), "4. Compliance Notes")
+notes_bm = add(os.path.join(OUT_DIR, "08_divider_compliance.pdf"), f"{_next_section}. Compliance Notes")
 add(os.path.join(OUT_DIR, "09_compliance_notes.pdf"), "Disclosure checklist & sign-off", parent=notes_bm)
 
 writer.add_metadata({

@@ -4,7 +4,7 @@
  */
 
 // Replace with the /exec URL you get after deploying Code.gs as a Web App.
-const LEAD_WEBHOOK_URL = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEB_APP_URL";
+const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwv5y_Vm_gqwIg3aGyEhlnIreE3h180jErOe11J5s7oF0frzq8O57cuADoFZOopFbc/exec";
 
 function getUtmParam(name) {
   try {

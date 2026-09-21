@@ -1,25 +1,25 @@
 /* Checkpoint Planning — shared brand styles
-   Palette pulled from existing Checkpoint Planning collateral:
-   navy/slate (process graphic), teal (logo + accents), warm gold (CTA accent) */
+   Cool, no-green palette: charcoal for bold areas, blue-grays for structure,
+   cool blue for accents, warm gold reserved for the primary CTA only. */
 
 :root {
-  --navy-900: #212e3a;
-  --navy-800: #2b3a4a;
-  --navy-700: #3c4f61;
-  --teal-700: #1f6f63;
-  --teal-600: #257d70;
-  --teal-500: #2e9b8c;
-  --teal-300: #7fc9bd;
-  --teal-100: #e4f3f0;
+  --navy-900: #1b2027;
+  --navy-800: #252b33;
+  --navy-700: #394452;
+  --teal-700: #285d88;
+  --teal-600: #33719f;
+  --teal-500: #4c8cbe;
+  --teal-300: #9cc4e2;
+  --teal-100: #e7eff6;
   --gold-500: #c8963e;
   --gold-600: #b07f2c;
-  --ink: #232c33;
-  --ink-soft: #56636b;
+  --ink: #232a30;
+  --ink-soft: #57626c;
   --paper: #ffffff;
-  --paper-alt: #f6f7f6;
-  --border: #e2e6e5;
+  --paper-alt: #f5f7f9;
+  --border: #dde3e9;
   --radius: 10px;
-  --shadow: 0 12px 30px -14px rgba(33, 46, 58, 0.25);
+  --shadow: 0 12px 30px -14px rgba(27, 32, 39, 0.28);
   --maxw: 1120px;
 }
 
@@ -140,6 +140,41 @@ img { max-width: 100%; display: block; }
   cursor: pointer;
   padding: 4px 6px;
 }
+
+/* Form CRS dropdown (nav) */
+.nav-crs { position: relative; display: flex; align-items: center; }
+.crs-trigger {
+  color: var(--navy-800);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: default;
+  white-space: nowrap;
+}
+.crs-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 250px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 8px;
+  z-index: 20;
+}
+.nav-crs:hover .crs-menu, .nav-crs:focus-within .crs-menu { display: block; }
+.crs-menu a {
+  display: block;
+  padding: 9px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 5px;
+  color: var(--navy-800);
+  text-decoration: none;
+}
+.crs-menu a:hover { background: var(--teal-100); color: var(--teal-700); }
+
 .header-cta { display: flex; align-items: center; gap: 18px; }
 .header-phone {
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -300,11 +335,11 @@ section { padding: 68px 0; }
 .strategy-step h4 { color: #fff; font-size: 0.98rem; margin-bottom: 4px; }
 .strategy-step .tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.8; display: block; margin-bottom: 10px; }
 .strategy-step p { font-size: 0.83rem; color: rgba(255,255,255,0.86); margin: 0; }
-.strategy-step:nth-child(1) { background: #33465a; }
-.strategy-step:nth-child(2) { background: #2c5a5e; }
-.strategy-step:nth-child(3) { background: #237567; }
-.strategy-step:nth-child(4) { background: #1b8a76; }
-.strategy-step:nth-child(5) { background: #0f9b81; }
+.strategy-step:nth-child(1) { background: #262c34; }
+.strategy-step:nth-child(2) { background: #2b3c4d; }
+.strategy-step:nth-child(3) { background: #2f5170; }
+.strategy-step:nth-child(4) { background: #2f6690; }
+.strategy-step:nth-child(5) { background: #2f7cae; }
 
 /* Bio */
 .bio-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 44px; align-items: center; }
@@ -554,8 +589,20 @@ section { padding: 68px 0; }
     overflow: hidden;
     transition: max-height 0.2s ease;
   }
-  .site-nav.open { max-height: 320px; }
+  .site-nav.open { max-height: 420px; overflow-y: auto; }
   .site-nav a { padding: 14px 24px; width: 100%; border-top: 1px solid var(--border); }
+  .nav-crs { flex-direction: column; align-items: flex-start; width: 100%; }
+  .crs-trigger {
+    padding: 14px 24px 6px;
+    width: 100%;
+    border-top: 1px solid var(--border);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+  }
+  .crs-menu { display: block; position: static; box-shadow: none; border: none; padding: 0; width: 100%; }
+  .crs-menu a { padding: 10px 24px 10px 36px; border-radius: 0; }
 }
 @media (min-width: 700px) {
   .header-phone { display: inline-block; }

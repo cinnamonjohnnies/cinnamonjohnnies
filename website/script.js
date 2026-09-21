@@ -4,7 +4,7 @@
  */
 
 // Replace with the /exec URL you get after deploying Code.gs as a Web App.
-const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwv5y_Vm_gqwIg3aGyEhlnIreE3h180jErOe11J5s7oF0frzq8O57cuADoFZOopFbc/exec";
+const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwT0EawBH3blI5kcYjvuDawS_e8ssO8TL1U4_GWRW95fNbhC_BN_kMzK8ZO2thJaqk/exec";
 
 // Replace with the conversion ID from LinkedIn Campaign Manager > Analyze >
 // Conversion Tracking (create a "Lead" conversion action first). The forms

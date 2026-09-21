@@ -24,7 +24,7 @@ This guide is designed to support you as you consider or move into early retirem
 
 ### Where You Are Today
 
-Retiring earlier than the standard timeline — by choice or otherwise — brings a different kind of transition than a typical retirement.
+Retiring earlier than the standard timeline, by choice or otherwise, brings a different kind of transition than a typical retirement.
 
 - What prompted this timeline? (a choice, a layoff, a health consideration, a spouse's plans)
 - Three words that describe how I feel about retiring on this timeline:
@@ -37,14 +37,14 @@ There is no need to have this fully resolved today. Naming it is the first step.
 ### The Five Decisions That Don't Wait
 
 **1. Healthcare Before Medicare**
-If you're retiring before 65, you need a coverage plan for the gap. Compare COBRA, ACA marketplace plans, and a spouse's employer coverage — including real monthly costs, not just premiums.
+If you're retiring before 65, you need a coverage plan for the gap. Compare COBRA, ACA marketplace plans, and a spouse's employer coverage, including real monthly costs, not just premiums.
 
 *Question to answer: How many years until I'm Medicare-eligible, and what will coverage cost me until then?*
 
 **2. Social Security Timing**
 Claiming early (as soon as 62), at full retirement age, or later (up to 70) changes your monthly benefit substantially and permanently. Retiring early doesn't mean you have to claim early.
 
-*Question to answer: Have I run the numbers on claiming at 62 vs. full retirement age vs. 70 — not just the monthly amount, but the break-even age?*
+*Question to answer: Have I run the numbers on claiming at 62 vs. full retirement age vs. 70, not just the monthly amount, but the break-even age?*
 
 **3. Pension Elections**
 If a pension is part of your retirement, lump sum vs. annuity and survivor benefit elections are typically permanent once made.
@@ -57,7 +57,7 @@ An early retirement means your savings need to last longer than a standard 30-ye
 *Question to answer: Has anyone run a retirement readiness projection based on my actual retirement age, not a generic assumption?*
 
 **5. Required Minimum Distributions (RMDs) and Roth Conversions**
-The years between early retirement and RMD age are often the best window for Roth conversions, when income — and tax rates — may be lower.
+The years between early retirement and RMD age are often the best window for Roth conversions, when income, and tax rates, may be lower.
 
 *Question to answer: Am I using the low-income years before RMDs begin to my advantage?*
 
@@ -81,16 +81,16 @@ List every income source that may apply once you retire.
 
 ### My First 90 Days Checkpoint
 
-**First 30 days — Stabilize**
+**First 30 days, Stabilize**
 - Confirm health coverage start date and cost
 - Understand any pension election deadlines
 - Delay any irreversible decisions (Social Security claim, pension election, large withdrawals)
 
-**Next 30 days — Clarify**
+**Next 30 days, Clarify**
 - Run a retirement income projection based on your real numbers
 - Identify one professional to talk to (financial planner, tax advisor)
 
-**Final 30 days — Decide**
+**Final 30 days, Decide**
 - Make Social Security and pension elections with full information
 - Set your withdrawal strategy for year one
 
@@ -118,7 +118,7 @@ Not every decision needs to happen before you retire. Write down what can wait, 
 
 This guide is designed to help you gain clarity as you consider early retirement. If you'd benefit from a deeper conversation about your specific numbers, support is available.
 
-**Schedule a complimentary Where We Begin session.** It is not a financial plan and there is no obligation of any kind — a structured, confidential space to review where you are, what's changed, what decisions matter now, and what can wait.
+**Schedule a complimentary Where We Begin session.** It is not a financial plan and there is no obligation of any kind, a structured, confidential space to review where you are, what's changed, what decisions matter now, and what can wait.
 
 **Scott Marcoe, CRPC™**
 Founder & Financial Planner, Checkpoint Planning

@@ -1,5 +1,5 @@
 /**
- * Checkpoint Planning — Lead capture webhook
+ * Checkpoint Planning, Lead capture webhook
  *
  * Deploy this as a Web App bound to the "Checkpoint Planning - Website Leads"
  * Google Sheet. Full deployment steps are in /docs/SETUP.md.

@@ -8,7 +8,7 @@
 
 ### How to Use This Guide
 
-This guide is designed to support you during divorce, separate from — but alongside — the legal process. It offers a simple way to organize the financial side of your situation before you finalize a settlement.
+This guide is designed to support you during divorce, separate from, but alongside, the legal process. It offers a simple way to organize the financial side of your situation before you finalize a settlement.
 
 **What this guide is:**
 - A tool to help you understand the financial implications of divorce
@@ -42,7 +42,7 @@ A settlement's headline number isn't the same as its after-tax, after-cost value
 *Question to answer: Have I evaluated the after-tax value of each asset in the proposed settlement, not just the total?*
 
 **2. QDROs and Retirement Account Division**
-Dividing a 401(k) or pension typically requires a Qualified Domestic Relations Order (QDRO) — a separate legal document from your divorce decree. IRAs are divided differently, through a transfer incident to divorce.
+Dividing a 401(k) or pension typically requires a Qualified Domestic Relations Order (QDRO), a separate legal document from your divorce decree. IRAs are divided differently, through a transfer incident to divorce.
 
 *Question to answer: Do I understand which accounts require a QDRO, and has one been drafted correctly?*
 
@@ -52,12 +52,12 @@ Your filing status changes, and the tax treatment of spousal support depends on 
 *Question to answer: Do I understand how my tax situation changes in the first year after divorce?*
 
 **4. A New Household Budget**
-Rebuilding a cash flow plan for a single household — often on a single income — is one of the most immediate practical needs after divorce.
+Rebuilding a cash flow plan for a single household, often on a single income, is one of the most immediate practical needs after divorce.
 
 *Question to answer: Have I built a realistic budget based on my post-divorce income and expenses, not my pre-divorce ones?*
 
 **5. Insurance and Beneficiary Updates**
-Life insurance, health coverage, and beneficiary designations on retirement accounts are easy to overlook after a divorce is final — and easy to get wrong if left unchanged.
+Life insurance, health coverage, and beneficiary designations on retirement accounts are easy to overlook after a divorce is final, and easy to get wrong if left unchanged.
 
 *Question to answer: Have I updated every beneficiary designation and insurance policy that still names my former spouse?*
 
@@ -80,16 +80,16 @@ Use this to organize what's on the table before you evaluate it.
 
 ### My First 90 Days Checkpoint
 
-**First 30 days — Stabilize**
+**First 30 days, Stabilize**
 - Open individual bank and credit accounts if you haven't already
 - Confirm health insurance coverage going forward
 - Delay any major financial commitments until the settlement is finalized
 
-**Next 30 days — Clarify**
+**Next 30 days, Clarify**
 - Build a post-divorce household budget
 - Identify one professional to talk to about the settlement (financial planner, tax advisor)
 
-**Final 30 days — Rebuild**
+**Final 30 days, Rebuild**
 - Update beneficiary designations and insurance
 - Set a savings and investment plan for your new household
 
@@ -116,7 +116,7 @@ Not every financial decision needs to happen immediately. Write down what can wa
 
 This guide is designed to help you gain financial clarity during divorce. If you'd benefit from a deeper, confidential conversation about your specific situation, support is available.
 
-**Schedule a complimentary Where We Begin session.** It is not a financial plan and there is no obligation of any kind — a structured, confidential space to review where you are, what's changed, what decisions matter now, and what can wait.
+**Schedule a complimentary Where We Begin session.** It is not a financial plan and there is no obligation of any kind, a structured, confidential space to review where you are, what's changed, what decisions matter now, and what can wait.
 
 **Scott Marcoe, CRPC™**
 Founder & Financial Planner, Checkpoint Planning

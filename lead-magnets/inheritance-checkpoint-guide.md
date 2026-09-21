@@ -8,7 +8,7 @@
 
 ### How to Use This Guide
 
-This guide is designed to support you after receiving an inheritance or unexpected wealth. It offers a simple way to organize your thinking — there is rarely a need to decide anything quickly.
+This guide is designed to support you after receiving an inheritance or unexpected wealth. It offers a simple way to organize your thinking, there is rarely a need to decide anything quickly.
 
 **What this guide is:**
 - A tool to help you gain clarity before making decisions
@@ -24,7 +24,7 @@ This guide is designed to support you after receiving an inheritance or unexpect
 
 ### Where You Are Today
 
-An inheritance often brings a mix of emotions alongside the financial questions — relief, grief, opportunity, guilt, or all of them at once.
+An inheritance often brings a mix of emotions alongside the financial questions, relief, grief, opportunity, guilt, or all of them at once.
 
 - What I'm feeling right now, beyond the financial questions:
 - What I most want to honor or protect with this inheritance:
@@ -42,7 +42,7 @@ Required distribution timelines differ significantly depending on your relations
 *Question to answer: Do I know which distribution rules apply to any retirement account I inherited?*
 
 **2. Step-Up in Cost Basis**
-Inherited assets like stocks, mutual funds, or real estate typically receive a "step-up" in cost basis to their value on the date of death — which can significantly reduce capital gains tax if you sell.
+Inherited assets like stocks, mutual funds, or real estate typically receive a "step-up" in cost basis to their value on the date of death, which can significantly reduce capital gains tax if you sell.
 
 *Question to answer: Do I know the stepped-up basis of what I inherited, and has it been documented?*
 
@@ -63,7 +63,7 @@ Paying down debt, funding goals, and investing for the future are not mutually e
 
 ---
 
-### What I Inherited — Snapshot
+### What I Inherited: Snapshot
 
 | Asset | Approximate Value | Tax Treatment (if known) | Any Deadline? |
 |---|---|---|---|
@@ -77,16 +77,16 @@ Paying down debt, funding goals, and investing for the future are not mutually e
 
 ### My First 90 Days Checkpoint
 
-**First 30 days — Protect**
+**First 30 days, Protect**
 - Confirm any distribution deadlines on inherited retirement accounts
 - Keep inherited funds in place; avoid spending or investing under pressure
 - Identify what, if anything, has a real deadline (most things do not)
 
-**Next 30 days — Understand**
+**Next 30 days, Understand**
 - Document the cost basis of inherited assets
 - Identify one professional to talk to (financial planner, tax advisor, estate attorney if needed)
 
-**Final 30 days — Decide, Thoughtfully**
+**Final 30 days, Decide, Thoughtfully**
 - Build an investment or spending plan aligned with your goals
 - Make a plan for any inherited property
 
@@ -113,7 +113,7 @@ Almost nothing about an inheritance needs to be decided immediately. Write down 
 
 This guide is designed to help you gain clarity after an inheritance, at your own pace. If you'd benefit from a deeper conversation, support is available.
 
-**Schedule a complimentary Where We Begin session.** It is not a financial plan and there is no obligation of any kind — a structured, confidential space to review where you are, what's changed, what decisions matter now, and what can wait.
+**Schedule a complimentary Where We Begin session.** It is not a financial plan and there is no obligation of any kind, a structured, confidential space to review where you are, what's changed, what decisions matter now, and what can wait.
 
 **Scott Marcoe, CRPC™**
 Founder & Financial Planner, Checkpoint Planning

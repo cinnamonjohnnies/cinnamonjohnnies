@@ -1,10 +1,17 @@
-/* Checkpoint Planning — shared site behavior
+/* Checkpoint Planning: shared site behavior
  * Handles lead-capture form submission to the Google Apps Script webhook
  * (see /website/google-apps-script/Code.gs and /docs/SETUP.md for deployment).
  */
 
 // Replace with the /exec URL you get after deploying Code.gs as a Web App.
 const LEAD_WEBHOOK_URL = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEB_APP_URL";
+
+// Replace with the conversion ID from LinkedIn Campaign Manager > Analyze >
+// Conversion Tracking (create a "Lead" conversion action first). The forms
+// on this site show an inline success message instead of navigating to a
+// new URL, so LinkedIn's URL-based conversion matching won't fire on its
+// own; this JS event is what makes LinkedIn conversion tracking work here.
+const LINKEDIN_CONVERSION_ID = "REPLACE_WITH_YOUR_LINKEDIN_CONVERSION_ID";
 
 function getUtmParam(name) {
   try {
@@ -31,7 +38,7 @@ function initLeadForms() {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Honeypot spam trap — if filled, silently drop the submission.
+      // Honeypot spam trap, if filled, silently drop the submission.
       const honeypot = form.querySelector('[name="company_website"]');
       if (honeypot && honeypot.value) return;
 
@@ -73,7 +80,7 @@ function initLeadForms() {
           statusEl.classList.add("success");
           statusEl.textContent =
             form.dataset.successMessage ||
-            "Thank you. Your request has been received — we will be in touch within one business day.";
+            "Thank you. Your request has been received. We will be in touch within one business day.";
         }
         form.reset();
 
@@ -83,6 +90,10 @@ function initLeadForms() {
             form_id: form.id || "lead_form",
             transition_type: data.transition_type || "",
           });
+        }
+
+        if (window.lintrk && !LINKEDIN_CONVERSION_ID.startsWith("REPLACE_WITH")) {
+          window.lintrk("track", { conversion_id: LINKEDIN_CONVERSION_ID });
         }
       } catch (err) {
         if (statusEl) {

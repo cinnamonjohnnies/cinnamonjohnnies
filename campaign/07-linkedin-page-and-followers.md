@@ -57,11 +57,14 @@ Planning Coordination, Insurance Planning
 **Website:** `https://start.checkpointplanning.com` (update to the root
 domain once it's live there, see `docs/DEPLOY.md`)
 
-**Banner image:** a simple version of the site's hero gradient (charcoal
-to blue, see `website/styles.css` for the exact values) with the tagline
-"Financial Clarity for Life's In-Betweens" reads as on-brand and takes
-minutes to produce in Canva or similar. Don't leave the default LinkedIn
-gray banner, it's the single biggest giveaway of an unfinished Page.
+**Banner image:** built and ready at `website/assets/linkedin-banner.png`
+(1128x191, LinkedIn's exact Page banner size), the site's hero gradient
+with the wordmark, tagline, and a small dotted-path motif echoing the
+logo. Upload it as-is under the Page's banner image setting. Source is
+`campaign/assets/linkedin-banner/banner.html`, rerun
+`campaign/assets/linkedin-banner/render.py` if the copy or colors ever
+need to change. Don't leave the default LinkedIn gray banner in the
+meantime, it's the single biggest giveaway of an unfinished Page.
 
 **Featured section:** pin a link to the "Where We Begin" session
 (`contact.html`) as the primary Featured item. This is the same page the

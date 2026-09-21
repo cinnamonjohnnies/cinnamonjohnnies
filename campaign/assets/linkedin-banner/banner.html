@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    width: 1128px; height: 191px;
+    overflow: hidden;
+  }
+  .banner {
+    width: 1128px; height: 191px;
+    position: relative;
+    background: linear-gradient(115deg, #1b2027 0%, #23364a 38%, #285d88 78%, #33719f 100%);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  /* subtle checkpoint-path motif, faint dots+line echoing the logo mark, right side */
+  .path {
+    position: absolute;
+    right: 40px; top: 0; bottom: 0;
+    width: 420px;
+    opacity: 0.16;
+  }
+  .content {
+    position: absolute;
+    left: 230px; top: 0; bottom: 0;
+    right: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .logo-mark {
+    width: 46px; height: 46px;
+    filter: invert(1) brightness(2.1);
+    flex-shrink: 0;
+  }
+  .wordmark {
+    line-height: 1.05;
+  }
+  .wordmark .light {
+    display: block;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 25px;
+    letter-spacing: 0.02em;
+  }
+  .wordmark .bold {
+    display: block;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 23px;
+    letter-spacing: 0.18em;
+  }
+  .tagline {
+    color: #cfe4f4;
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .rule {
+    width: 54px;
+    height: 3px;
+    background: #c8963e;
+    border-radius: 2px;
+    margin: 12px 0 0 0;
+  }
+  /* keep bottom-left clear: that's where the circular Page logo overlaps */
+  .safe-zone-note { display: none; }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <svg class="path" viewBox="0 0 420 191" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 10 170 C 90 170, 90 60, 170 60 S 250 150, 330 150 S 400 40, 410 20"
+            fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="1 14" stroke-linecap="round"/>
+      <circle cx="10" cy="170" r="7" fill="#ffffff"/>
+      <circle cx="170" cy="60" r="7" fill="#ffffff"/>
+      <circle cx="330" cy="150" r="7" fill="#ffffff"/>
+      <circle cx="410" cy="20" r="9" fill="#c8963e"/>
+    </svg>
+    <div class="content">
+      <div class="brand-row">
+        <img class="logo-mark" src="checkpoint-logo-mark.png" />
+        <div class="wordmark">
+          <span class="light">CHECKPOINT</span>
+          <span class="bold">PLANNING</span>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <p class="tagline">Financial Clarity for Life's In-Betweens</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -22,10 +22,11 @@ function initLeadForms() {
     if (sourceField && !sourceField.value) {
       sourceField.value = document.title;
     }
-    const utmSourceField = form.querySelector('[name="utm_source"]');
-    if (utmSourceField) utmSourceField.value = getUtmParam("utm_source");
-    const utmCampaignField = form.querySelector('[name="utm_campaign"]');
-    if (utmCampaignField) utmCampaignField.value = getUtmParam("utm_campaign");
+    // Auto-fill any hidden utm_* field (utm_source, utm_medium, utm_campaign,
+    // utm_content, utm_term, ...) from the current page's query string.
+    form.querySelectorAll('input[type="hidden"][name^="utm_"]').forEach((field) => {
+      field.value = getUtmParam(field.name);
+    });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();

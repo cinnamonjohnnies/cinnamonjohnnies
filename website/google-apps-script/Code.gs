@@ -6,7 +6,8 @@
  *
  * The sheet's header row (already created) is:
  * Timestamp | Name | Email | Phone | Transition Type | Source Page |
- * Message | Lead Magnet Downloaded | UTM Source | UTM Campaign | Status
+ * Message | Lead Magnet Downloaded | UTM Source | UTM Campaign | UTM Medium |
+ * UTM Content | Status
  */
 
 const SHEET_NAME = "Sheet1"; // rename if your tab has a different name
@@ -31,6 +32,8 @@ function doPost(e) {
       data.lead_magnet || "",
       data.utm_source || "",
       data.utm_campaign || "",
+      data.utm_medium || "",
+      data.utm_content || "",
       "New",
     ];
 

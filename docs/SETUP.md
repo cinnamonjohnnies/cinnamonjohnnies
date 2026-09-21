@@ -46,6 +46,13 @@ been created in your Google Drive with the right columns
 (Timestamp, Name, Email, Phone, Transition Type, Source Page, Message, Lead
 Magnet Downloaded, UTM Source, UTM Campaign, Status).
 
+**Before running any paid campaigns**, insert two more columns into that
+header row, between "UTM Campaign" and "Status": **UTM Medium** and
+**UTM Content**. The forms and `Code.gs` already send this data (added to
+support per-ad attribution for the LinkedIn/Facebook campaign — see
+`campaign/00-foundations.md`); the Sheet's header row just needs to catch up
+since there's no API used here that can edit a single cell for you.
+
 To connect the website forms to it:
 
 1. Open the Sheet, go to **Extensions → Apps Script**.

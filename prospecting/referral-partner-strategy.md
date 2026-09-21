@@ -19,7 +19,7 @@ Build relationships with professionals who meet your ideal client *before* you d
 | Early retirement | CPAs, HR/benefits consultants, employee benefits brokers |
 | Inheritance | Estate planning attorneys, trust officers, probate attorneys, CPAs |
 
-Every one of these categories has a name that already appears in your own materials: Keali Jo French (estate/trust), David Keil (Enrolled Agent), William Castro (business exit) — you already operate on a referral-partner model. This extends it to net-new partners, not just your existing extended team.
+Every one of these categories already maps to a specialty area Scott coordinates on for existing clients (estate/trust, tax, business exit) — you already operate on a referral-partner model. This extends it to net-new partners. Note: per compliance guidance, none of these referral partners should be named on the website or in client-facing marketing material unless they are affiliated with Ameritas; keep names in an internal contact list only.
 
 ### What "prospecting" means in this context
 

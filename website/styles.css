@@ -452,27 +452,6 @@ section { padding: 68px 0; }
 .timeline-item h4 { margin-bottom: 4px; }
 .timeline-item p { color: var(--ink-soft); margin: 0; font-size: 0.94rem; }
 
-/* Team grid */
-.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.team-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px;
-}
-.team-card .role {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: var(--teal-600);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
-  display: block;
-}
-.team-card h4 { margin-bottom: 6px; }
-.team-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
-
 /* Checklist (Menu of Services) */
 .checklist-group h4 {
   font-size: 1rem;

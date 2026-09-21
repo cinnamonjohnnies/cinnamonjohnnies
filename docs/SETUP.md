@@ -9,7 +9,7 @@ Strategy, Fees & Services, your bio, and the "Your Next Checkpoint" workbook).
 ```
 website/                    Static site (HTML/CSS/JS, no build step)
   index.html                 Homepage
-  about.html                  About Scott + extended team
+  about.html                  About Scott + coordinated support areas
   services.html                Full services menu + links to transition pages
   process.html                 The Checkpoint Strategy + Working Together timeline
   fees.html                    Planning packages + AUM fee schedule

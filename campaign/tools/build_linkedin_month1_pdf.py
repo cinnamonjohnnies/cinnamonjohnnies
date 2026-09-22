@@ -6,6 +6,7 @@
 
 import os
 import re
+import glob
 import datetime
 from pypdf import PdfWriter, PdfReader
 from reportlab.lib.pagesizes import LETTER
@@ -25,6 +26,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 FINAL_PATH = os.path.join(ROOT, "compliance", "LinkedIn-Month-1-Compliance-Submission.pdf")
 POST_MOCKUP_DIR = os.path.join(CAMPAIGN, "assets", "post-mockups")
 AD_MOCKUP_DIR = os.path.join(CAMPAIGN, "assets", "ad-mockups")
+POST_CAROUSEL_DIR = os.path.join(CAMPAIGN, "assets", "post-carousels")
 
 MAX_W = 6.9 * inch
 MAX_H = 8.5 * inch
@@ -209,12 +211,24 @@ section_divider_pdf(os.path.join(OUT_DIR, "04_divider_posts.pdf"), "Section 2", 
 
 post_paths = []
 for num, headline, body in post_blocks:
-    mockup_path = os.path.join(POST_MOCKUP_DIR, f"post-{int(num):02d}.png")
+    n = int(num)
+    mockup_path = os.path.join(POST_MOCKUP_DIR, f"post-{n:02d}.png")
     flow = [
         Paragraph(f"Post {num}: {md_inline(headline.strip())}", styles["CPH1"]),
+        Paragraph("Document post, shown as it will appear in-feed (slide 1 of the carousel).", styles["CPMeta"]),
+        Spacer(1, 6),
         fitted_image(mockup_path),
+        PageBreak(),
     ]
-    out_path = os.path.join(OUT_DIR, f"05_post_{int(num):02d}.pdf")
+    slide_paths = sorted(glob.glob(os.path.join(POST_CAROUSEL_DIR, f"post-{n:02d}", "slide-*.png")))
+    flow.append(Paragraph(f"Post {num}: all {len(slide_paths)} carousel slides", styles["CPH1"]))
+    slide_w = 3.1 * inch
+    for i, sp in enumerate(slide_paths):
+        w, h = PILImage.open(sp).size
+        flow.append(Paragraph(f"Slide {i + 1} of {len(slide_paths)}", styles["CPMeta"]))
+        flow.append(RLImage(sp, width=slide_w, height=slide_w * h / w))
+        flow.append(Spacer(1, 10))
+    out_path = os.path.join(OUT_DIR, f"05_post_{n:02d}.pdf")
     build_doc(out_path, flow)
     post_paths.append((num, headline.strip(), out_path))
 

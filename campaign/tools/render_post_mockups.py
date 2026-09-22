@@ -1,14 +1,18 @@
 # Renders 12 LinkedIn organic post mockups, one per post in
 # campaign/08-linkedin-content-calendar-month1.md, showing the post exactly
 # as it will appear in-feed: profile row, full post text with hashtags and
-# disclosure line, the quote-card image, and the engagement bar. Parses the
-# calendar file directly so it stays in sync with edits there.
+# disclosure line, the document/carousel viewer (first slide, page count,
+# swipe arrows, matching LinkedIn's own document-post chrome since these
+# are now multi-slide carousels, see render_post_carousels.py), and the
+# engagement bar. Parses the calendar file directly so it stays in sync
+# with edits there.
 #
 # Requires: pip install playwright.
 # Usage: python3 campaign/tools/render_post_mockups.py
 
 import os
 import re
+import glob
 from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -47,7 +51,19 @@ TEMPLATE = """<!DOCTYPE html><html><head><meta charset="UTF-8" /><style>
   .body { padding:0 26px 22px 26px; font-size:17px; line-height:1.6; color:#232a30; white-space:pre-wrap; }
   .body .hashtags { color:#2860a3; }
   .body .disclosure { font-size:13px; color:#5a6570; line-height:1.5; margin-top:16px; }
-  .postimg { width:1200px; display:block; }
+  .doc-wrap { position:relative; width:1200px; height:1200px; background:#1b2027; }
+  .docimg { width:1200px; height:1200px; display:block; }
+  .doc-badge { position:absolute; bottom:20px; right:20px; background:rgba(0,0,0,0.55); color:#fff;
+    font-size:15px; font-weight:700; padding:6px 14px; border-radius:14px; }
+  .doc-chevron { position:absolute; top:50%%; transform:translateY(-50%%); width:44px; height:44px;
+    background:rgba(255,255,255,0.9); border-radius:50%%; display:flex; align-items:center; justify-content:center;
+    font-size:20px; color:#1b2027; font-weight:700; }
+  .doc-chevron.right { right:20px; }
+  .doc-progress { position:absolute; top:0; left:0; right:0; height:4px; display:flex; gap:4px; padding:10px 16px 0 16px; box-sizing:border-box; }
+  .doc-progress .seg { flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,0.35); }
+  .doc-progress .seg.on { background:#ffffff; }
+  .doc-label { position:absolute; bottom:20px; left:20px; background:rgba(0,0,0,0.55); color:#fff;
+    font-size:14px; font-weight:600; padding:6px 14px; border-radius:14px; }
   .engage { display:flex; gap:34px; padding:16px 26px; color:#5a6570; font-size:15px; font-weight:600; border-top:1px solid #eef1f3; }
 </style></head>
 <body>
@@ -61,7 +77,13 @@ TEMPLATE = """<!DOCTYPE html><html><head><meta charset="UTF-8" /><style>
     </div>
   </div>
   <div class="body">%s</div>
-  <img class="postimg" src="../post-creatives/post-%02d.png" />
+  <div class="doc-wrap">
+    <img class="docimg" src="../post-carousels/post-%02d/slide-01.png" />
+    <div class="doc-progress">%s</div>
+    <div class="doc-label">Document</div>
+    <div class="doc-chevron right">&#8250;</div>
+    <div class="doc-badge">1/%d</div>
+  </div>
   <div class="engage"><span>&#128077; Like</span><span>&#128172; Comment</span><span>&#8617; Share</span><span>&#9993; Send</span></div>
 </div>
 </body></html>"""
@@ -87,8 +109,10 @@ def format_body(raw):
     return "".join(out)
 
 def render(num, headline, body_text):
+    slide_count = len(glob.glob(os.path.join(CAMPAIGN, "assets", "post-carousels", f"post-{num:02d}", "slide-*.png")))
+    progress_html = "".join(f'<div class="seg {"on" if i == 0 else ""}"></div>' for i in range(slide_count))
     body_html = format_body(body_text)
-    html = TEMPLATE % (DATES[num], body_html, num)
+    html = TEMPLATE % (DATES[num], body_html, num, progress_html, slide_count)
     tmp_html = os.path.join(OUT_DIR, f"_post_{num:02d}.html")
     with open(tmp_html, "w") as f:
         f.write(html)

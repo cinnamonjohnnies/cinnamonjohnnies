@@ -137,19 +137,9 @@ c.setFillColor(colors.HexColor("#9cc4e2"))
 c.setFont("Helvetica", 13)
 c.drawString(0.9*inch, H-4.55*inch, "12 organic posts, posting schedule, and ad copy for all 4 segments")
 
-c.setFillColor(colors.white)
-c.setFont("Helvetica-Bold", 10)
-c.drawString(0.9*inch, 1.6*inch, "SUBMITTED BY")
-c.setFont("Helvetica", 11)
-c.drawString(0.9*inch, 1.38*inch, "Scott Marcoe, CRPC (TM), Founder & Financial Planner, Checkpoint Planning")
-c.setFont("Helvetica", 9.5)
-c.setFillColor(colors.HexColor("#9cc4e2"))
-c.drawString(0.9*inch, 1.18*inch, "Checkpoint Planning, Capstone Financial Group | Ameritas Investment Company, LLC (AIC), Member FINRA/SIPC")
-c.drawString(0.9*inch, 1.02*inch, "Ameritas Advisory Services, LLC (AAS)  |  scott@checkpointplanning.com  |  (949) 702-0139")
-
 c.setFont("Helvetica", 9.5)
 c.setFillColor(colors.white)
-c.drawRightString(W-0.9*inch, 1.6*inch, "Date: " + datetime.date.today().strftime("%B %d, %Y"))
+c.drawString(0.9*inch, 1.2*inch, "Date: " + datetime.date.today().strftime("%B %d, %Y"))
 c.showPage()
 c.save()
 
@@ -255,23 +245,7 @@ for title, destination, body in ad_sections:
     ad_paths.append((title.strip(), out_path))
 
 # ---------------------------------------------------------------
-# 6. Sign-off
-# ---------------------------------------------------------------
-signoff_flow = [
-    Paragraph("Reviewer Sign-Off", styles["CPTitle"]),
-    Paragraph(
-        "Reviewed by: _______________________________     Date: ______________", styles["CPBody"]),
-    Paragraph(
-        "[ ] Approved as submitted    [ ] Approved with changes (noted below)    [ ] Not approved",
-        styles["CPBody"]),
-    Spacer(1, 6),
-    Paragraph("Notes:", styles["CPBody"]),
-    Spacer(1, 200),
-]
-build_doc(os.path.join(OUT_DIR, "08_signoff.pdf"), signoff_flow)
-
-# ---------------------------------------------------------------
-# 7. Merge with bookmarks
+# 6. Merge with bookmarks
 # ---------------------------------------------------------------
 writer = PdfWriter()
 
@@ -297,8 +271,6 @@ for num, headline, path in post_paths:
 ads_bm = add(os.path.join(OUT_DIR, "06_divider_ads.pdf"), "3. LinkedIn Ad Copy")
 for title, path in ad_paths:
     add(path, title, parent=ads_bm)
-
-add(os.path.join(OUT_DIR, "08_signoff.pdf"), "4. Reviewer Sign-Off")
 
 writer.add_metadata({
     "/Title": "Checkpoint Planning - LinkedIn Month 1 - Compliance Submission",

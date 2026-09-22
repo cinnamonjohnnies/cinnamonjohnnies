@@ -32,7 +32,7 @@ A layoff puts a dozen financial decisions in front of you at once, including sev
 
 **CTA button:** Download
 
-**Image concept:** Clean, calm editorial-style graphic featuring the phrase "One Checkpoint at a Time," or a simple 3-step visual (Stabilize, Plan, Move Forward), navy/blue palette matching the site. Avoid stock photography of stressed people at desks; keep it abstract/typographic to match the site's tone.
+**Image concept:** Clean, editorial-style graphic featuring the phrase "One Checkpoint at a Time," in the site's navy/blue palette, abstract and typographic in style.
 
 ### Variant A2
 **Intro text:**
@@ -44,7 +44,7 @@ Severance decisions. COBRA vs. marketplace coverage. What to do with your old 40
 
 **CTA button:** Download
 
-**Image concept:** Same visual system as A1; test workbook cover mockup vs. the abstract/typographic version from A1.
+**Image concept:** Workbook cover mockup in the site's navy/blue palette, same visual system as A1.
 
 ---
 
@@ -62,7 +62,7 @@ Retiring earlier than planned changes the math: Social Security timing, healthca
 
 **CTA button:** Download
 
-**Image concept:** Confident, forward-looking visual: a simple roadmap/milestone graphic (echoing the site's "checkpoints" concept, 30/90/180-day markers). Avoid generic "happy retired couple on a beach" stock imagery; keep it aligned to the analytical, structured tone of the brand.
+**Image concept:** A simple roadmap/milestone graphic echoing the site's "checkpoints" concept, with 30/90/180-day markers, in the brand's analytical, structured visual style.
 
 ### Variant A2
 **Intro text:**
@@ -74,7 +74,7 @@ Claiming Social Security at 62 instead of full retirement age can permanently cu
 
 **CTA button:** Download
 
-**Image concept:** Simple stat callout treatment ("62 vs. 70: it's not just about the number") in the brand's blue/charcoal palette, data-forward, not lifestyle photography.
+**Image concept:** A simple stat callout graphic ("62 vs. 70: it's not just about the number") in the brand's blue/charcoal palette, data-forward and typographic.
 
 ---
 
@@ -92,7 +92,7 @@ Divorce brings a wave of financial decisions on top of an already difficult time
 
 **CTA button:** Download
 
-**Image concept:** Neutral and professional. Avoid any imagery implying relationship conflict. A simple document/checklist visual works better here than any photography.
+**Image concept:** A simple document/checklist graphic, neutral and professional, in the site's blue/charcoal palette.
 
 *Note: no strong professional-graph targeting signal exists for this segment on LinkedIn (see `01-audience-targeting.md`). Treat this as a small, capped-budget test rather than a primary placement.*
 
@@ -112,6 +112,6 @@ Received an inheritance? There's rarely a need to decide anything quickly. A fre
 
 **CTA button:** Download
 
-**Image concept:** Calm, unhurried visual tone. Avoid any imagery referencing loss or a funeral. Lead with the financial-decision framing only, per the tone note in `01-audience-targeting.md`.
+**Image concept:** A calm, unhurried graphic built around the financial-decision framing only, in the site's blue/charcoal palette.
 
 *Note: same low-priority treatment as Divorce above (small test budget). Facebook is the primary platform for this segment.*

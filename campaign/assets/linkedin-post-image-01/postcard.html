@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    width: 1200px; height: 1200px;
+    overflow: hidden;
+  }
+  .card {
+    width: 1200px; height: 1200px;
+    position: relative;
+    background: linear-gradient(160deg, #1b2027 0%, #23364a 42%, #285d88 78%, #33719f 100%);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .path {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    opacity: 0.14;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 56px;
+    z-index: 2;
+  }
+  .logo-mark {
+    width: 64px; height: 64px;
+    filter: invert(1) brightness(2.1);
+  }
+  .wordmark { line-height: 1.05; }
+  .wordmark .light {
+    display: block; color: #fff; font-weight: 300; font-size: 30px; letter-spacing: 0.02em;
+  }
+  .wordmark .bold {
+    display: block; color: #fff; font-weight: 800; font-size: 27px; letter-spacing: 0.18em;
+  }
+  .quote {
+    z-index: 2;
+    color: #ffffff;
+    font-size: 64px;
+    font-weight: 700;
+    text-align: center;
+    max-width: 900px;
+    line-height: 1.25;
+    margin: 0 0 28px 0;
+  }
+  .rule {
+    width: 90px; height: 5px;
+    background: #c8963e;
+    border-radius: 3px;
+    margin: 0 0 28px 0;
+    z-index: 2;
+  }
+  .subline {
+    z-index: 2;
+    color: #cfe4f4;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    max-width: 760px;
+    line-height: 1.5;
+  }
+  .tagline {
+    position: absolute;
+    bottom: 64px;
+    left: 0; right: 0;
+    text-align: center;
+    color: #9cc4e2;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <svg class="path" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 60 1120 C 260 1120, 260 820, 460 820 S 660 1020, 860 1020 S 1080 700, 1140 620"
+            fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="1 20" stroke-linecap="round"/>
+      <circle cx="60" cy="1120" r="11" fill="#ffffff"/>
+      <circle cx="460" cy="820" r="11" fill="#ffffff"/>
+      <circle cx="860" cy="1020" r="11" fill="#ffffff"/>
+      <circle cx="1140" cy="620" r="14" fill="#c8963e"/>
+    </svg>
+
+    <div class="brand-row">
+      <img class="logo-mark" src="checkpoint-logo-mark.png" />
+      <div class="wordmark">
+        <span class="light">CHECKPOINT</span>
+        <span class="bold">PLANNING</span>
+      </div>
+    </div>
+
+    <p class="quote">&ldquo;One checkpoint<br/>at a time.&rdquo;</p>
+    <div class="rule"></div>
+    <p class="subline">A structured approach to life's<br/>biggest financial transitions.</p>
+
+    <p class="tagline">FINANCIAL CLARITY FOR LIFE'S IN-BETWEENS</p>
+  </div>
+</body>
+</html>

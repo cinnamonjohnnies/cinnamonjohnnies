@@ -265,6 +265,20 @@ def segment_slug(title):
             return slug
     return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
 
+AD_FIELDS = ["Intro text", "Headline", "Description", "CTA button", "Image concept"]
+
+def full_copy_flowables(variant_body):
+    # The in-feed mockup shows the LinkedIn "...see more" truncation UI, which
+    # is accurate to how the ad displays but is not enough for a compliance
+    # reviewer to sign off on: they need every field spelled out in full,
+    # unambiguously, with nothing implied to be cut off.
+    flow = [Paragraph("Full ad copy, for review", styles["CPH2"])]
+    pattern = r"\*\*(" + "|".join(re.escape(f) for f in AD_FIELDS) + r"):\*\*\s*(.*?)(?=\n\*\*(?:" + "|".join(re.escape(f) for f in AD_FIELDS) + r"):\*\*|\Z)"
+    for label, value in re.findall(pattern, variant_body.strip(), re.S):
+        value = " ".join(value.strip().split())
+        flow.append(Paragraph(f"<b>{esc(label)}:</b> {md_inline(value)}", styles["CPBody"]))
+    return flow
+
 ad_paths = []
 for title, destination, body in ad_sections:
     slug = segment_slug(title)
@@ -275,9 +289,12 @@ for title, destination, body in ad_sections:
         flow = [
             Paragraph(md_inline(f"{title.strip()}, Variant {variant_id}"), styles["CPH1"]),
             Paragraph(f"Destination: {esc(destination)}", styles["CPMeta"]),
+            Paragraph("Shown as it will render in-feed (LinkedIn truncates intro text at ~150 characters behind “...see more”, the full text is below).", styles["CPMeta"]),
             Spacer(1, 8),
             fitted_image(mockup_path),
+            PageBreak(),
         ]
+        flow.extend(full_copy_flowables(variant_body))
         if note_match:
             flow.append(Spacer(1, 8))
             flow.append(Paragraph(md_inline(note_match.group(1).strip().strip("*")), styles["CPDisclosure"]))

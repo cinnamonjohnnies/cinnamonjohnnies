@@ -13,15 +13,30 @@ from reportlab.lib.units import inch
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle, HRFlowable
+    SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle, HRFlowable, Image as RLImage
 )
 from reportlab.pdfgen import canvas as canvas_mod
+from PIL import Image as PILImage
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CAMPAIGN = os.path.join(ROOT, "campaign")
 OUT_DIR = os.path.join(CAMPAIGN, "_build_month1")
 os.makedirs(OUT_DIR, exist_ok=True)
 FINAL_PATH = os.path.join(ROOT, "compliance", "LinkedIn-Month-1-Compliance-Submission.pdf")
+POST_MOCKUP_DIR = os.path.join(CAMPAIGN, "assets", "post-mockups")
+AD_MOCKUP_DIR = os.path.join(CAMPAIGN, "assets", "ad-mockups")
+
+MAX_W = 6.9 * inch
+MAX_H = 8.5 * inch
+
+def fitted_image(path):
+    w, h = PILImage.open(path).size
+    ratio = h / w
+    if MAX_W * ratio <= MAX_H:
+        draw_w, draw_h = MAX_W, MAX_W * ratio
+    else:
+        draw_w, draw_h = MAX_H / ratio, MAX_H
+    return RLImage(path, width=draw_w, height=draw_h)
 
 NAVY = colors.HexColor("#1b2027")
 BLUE = colors.HexColor("#33719f")
@@ -95,23 +110,6 @@ with open(os.path.join(CAMPAIGN, "02-linkedin-ads.md")) as f:
 
 ad_sections = re.findall(r"## ([^\n]+)\n\nDestination: `([^`]+)`\n\n(.*?)(?=\n---\n\n## |\Z)", ads_text, re.S)
 
-def variant_flowables(variant_text):
-    flow = []
-    lines = [l for l in variant_text.strip().split("\n") if l.strip()]
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        if line.startswith("### "):
-            flow.append(Paragraph(md_inline(line[4:]), styles["CPMeta"]))
-        elif line.startswith("**") and "**" in line[2:]:
-            flow.append(Paragraph(md_inline(line), styles["CPBody"]))
-        elif line.startswith("*Note:"):
-            flow.append(Paragraph(md_inline(line.strip("*")), styles["CPDisclosure"]))
-        else:
-            flow.append(Paragraph(md_inline(line), styles["CPBody"]))
-        i += 1
-    return flow
-
 # ---------------------------------------------------------------
 # 1. Cover
 # ---------------------------------------------------------------
@@ -157,14 +155,16 @@ summary_flow = [
     Paragraph(
         "Three per week for four weeks (Monday/Wednesday/Friday), rotating through transition "
         "education, a five-part Checkpoint Strategy explainer series, personal story, and "
-        "fiduciary/practice differentiator content. Each post includes its disclosure line and "
-        "hashtags exactly as they'll be published.", styles["CPBody"]),
-    Paragraph("2. LinkedIn ad copy, 4 segments, 8 ads", styles["CPH2"]),
+        "fiduciary/practice differentiator content. Each post is shown as it will actually render "
+        "in-feed, image and layout included, with its disclosure line and hashtags exactly as "
+        "they'll be published.", styles["CPBody"]),
+    Paragraph("2. LinkedIn ad copy, 4 segments, 6 ads", styles["CPH2"]),
     Paragraph(
-        "Two variants each for Job Loss & Layoff, Early Retirement, Divorce, and Inheritance. "
-        "Job Loss is the only segment launching immediately (Phase 1 of the budget and testing "
-        "plan); the other three are included now so a later phase does not require a second "
-        "compliance round-trip.", styles["CPBody"]),
+        "Two variants each for Job Loss & Layoff and Early Retirement, one variant each for "
+        "Divorce and Inheritance. Each ad is shown as a full creative mockup, image, headline, "
+        "description, and CTA, as it will appear in the LinkedIn feed. Job Loss is the only "
+        "segment launching immediately (Phase 1 of the budget and testing plan); the other three "
+        "are included now so a later phase does not require a second compliance round-trip.", styles["CPBody"]),
     Spacer(1, 10),
     HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#dde3e9")),
     Spacer(1, 8),
@@ -205,24 +205,15 @@ build_doc(os.path.join(OUT_DIR, "03_schedule.pdf"), schedule_flow)
 # ---------------------------------------------------------------
 # 4. Organic posts
 # ---------------------------------------------------------------
-section_divider_pdf(os.path.join(OUT_DIR, "04_divider_posts.pdf"), "Section 2", "Organic Posts (12)", "Checkpoint Planning")
+section_divider_pdf(os.path.join(OUT_DIR, "04_divider_posts.pdf"), "Section 2", "Organic Posts (12), shown as final in-feed creative", "Checkpoint Planning")
 
 post_paths = []
 for num, headline, body in post_blocks:
-    flow = [Paragraph(f"Post {num}: {md_inline(headline.strip())}", styles["CPH1"])]
-    body = body.strip()
-    paras = re.split(r"\n\n+", body)
-    for para in paras:
-        para = para.strip()
-        if not para:
-            continue
-        if para.startswith("**Disclosure:**"):
-            flow.append(Paragraph(md_inline(para), styles["CPDisclosure"]))
-        elif para.startswith("#"):
-            flow.append(Paragraph(md_inline(para), styles["CPMeta"]))
-        else:
-            para_html = md_inline(para).replace("\n", "<br/>")
-            flow.append(Paragraph(para_html, styles["CPBody"]))
+    mockup_path = os.path.join(POST_MOCKUP_DIR, f"post-{int(num):02d}.png")
+    flow = [
+        Paragraph(f"Post {num}: {md_inline(headline.strip())}", styles["CPH1"]),
+        fitted_image(mockup_path),
+    ]
     out_path = os.path.join(OUT_DIR, f"05_post_{int(num):02d}.pdf")
     build_doc(out_path, flow)
     post_paths.append((num, headline.strip(), out_path))
@@ -230,19 +221,40 @@ for num, headline, body in post_blocks:
 # ---------------------------------------------------------------
 # 5. Ad copy
 # ---------------------------------------------------------------
-section_divider_pdf(os.path.join(OUT_DIR, "06_divider_ads.pdf"), "Section 3", "LinkedIn Ad Copy (4 Segments)", "Checkpoint Planning")
+section_divider_pdf(os.path.join(OUT_DIR, "06_divider_ads.pdf"), "Section 3", "LinkedIn Ads (6), shown as final in-feed creative", "Checkpoint Planning")
+
+SEGMENT_SLUGS = [
+    ("Job Loss", "job-loss"),
+    ("Early Retirement", "early-retirement"),
+    ("Divorce", "divorce"),
+    ("Inheritance", "inheritance"),
+]
+
+def segment_slug(title):
+    for keyword, slug in SEGMENT_SLUGS:
+        if keyword in title:
+            return slug
+    return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
 
 ad_paths = []
 for title, destination, body in ad_sections:
-    flow = [
-        Paragraph(md_inline(title.strip()), styles["CPH1"]),
-        Paragraph(f"Destination: {esc(destination)}", styles["CPMeta"]),
-        Spacer(1, 6),
-    ]
-    flow.extend(variant_flowables(body))
-    out_path = os.path.join(OUT_DIR, f"07_ad_{re.sub(r'[^a-z0-9]+', '_', title.lower()).strip('_')}.pdf")
-    build_doc(out_path, flow)
-    ad_paths.append((title.strip(), out_path))
+    slug = segment_slug(title)
+    variant_blocks = re.findall(r"### Variant (A\d)\n(.*?)(?=\n### Variant|\Z)", body.strip(), re.S)
+    note_match = re.search(r"(\*Note:.*)", body, re.S)
+    for variant_id, variant_body in variant_blocks:
+        mockup_path = os.path.join(AD_MOCKUP_DIR, f"{slug}-{variant_id.lower()}.png")
+        flow = [
+            Paragraph(md_inline(f"{title.strip()}, Variant {variant_id}"), styles["CPH1"]),
+            Paragraph(f"Destination: {esc(destination)}", styles["CPMeta"]),
+            Spacer(1, 8),
+            fitted_image(mockup_path),
+        ]
+        if note_match:
+            flow.append(Spacer(1, 8))
+            flow.append(Paragraph(md_inline(note_match.group(1).strip().strip("*")), styles["CPDisclosure"]))
+        out_path = os.path.join(OUT_DIR, f"07_ad_{slug}_{variant_id.lower()}.pdf")
+        build_doc(out_path, flow)
+        ad_paths.append((f"{title.strip()}, {variant_id}", out_path))
 
 # ---------------------------------------------------------------
 # 6. Merge with bookmarks
@@ -268,7 +280,7 @@ posts_bm = add(os.path.join(OUT_DIR, "04_divider_posts.pdf"), "2. Organic Posts 
 for num, headline, path in post_paths:
     add(path, f"Post {num}: {headline}", parent=posts_bm)
 
-ads_bm = add(os.path.join(OUT_DIR, "06_divider_ads.pdf"), "3. LinkedIn Ad Copy")
+ads_bm = add(os.path.join(OUT_DIR, "06_divider_ads.pdf"), "3. LinkedIn Ad Creative")
 for title, path in ad_paths:
     add(path, title, parent=ads_bm)
 

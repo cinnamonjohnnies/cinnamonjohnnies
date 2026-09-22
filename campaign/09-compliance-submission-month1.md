@@ -6,14 +6,17 @@ the whole month can run without a mid-month compliance gap.
 ## What's included
 
 1. **12 organic LinkedIn posts** (`08-linkedin-content-calendar-month1.md`),
-   3x/week for four weeks, each with its disclosure line and hashtags as
-   they'll actually be published.
+   3x/week for four weeks, each shown as a full creative mockup (image and
+   layout as it will actually render in-feed) with its disclosure line and
+   hashtags as they'll actually be published.
 2. **LinkedIn ad copy, all 4 segments** (`02-linkedin-ads.md`), 2
-   variants each for Job Loss & Layoff, Early Retirement, Divorce, and
-   Inheritance, 8 ads total. Job Loss is the only segment actually
-   launching now (see `06-linkedin-launch-today.md`), the other three
-   are included so Phase 2 (`04-budget-and-testing-plan.md`) doesn't need
-   a second compliance round-trip later.
+   variants each for Job Loss & Layoff and Early Retirement, 1 variant
+   each for Divorce and Inheritance, 6 ads total, each shown as a full
+   creative mockup (ad image, headline, description, and CTA as it will
+   render in-feed). Job Loss is the only segment actually launching now
+   (see `06-linkedin-launch-today.md`), the other three are included so
+   Phase 2 (`04-budget-and-testing-plan.md`) doesn't need a second
+   compliance round-trip later.
 
 ## What's deliberately not included
 

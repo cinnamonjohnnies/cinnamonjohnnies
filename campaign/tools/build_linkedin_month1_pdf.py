@@ -31,14 +31,28 @@ POST_CAROUSEL_DIR = os.path.join(CAMPAIGN, "assets", "post-carousels")
 MAX_W = 6.9 * inch
 MAX_H = 8.5 * inch
 
+def compressed(path, max_dim=1400, quality=82):
+    # Embedded screenshots come in at 2x-2400px+; the PDF only ever displays
+    # them at a few hundred points, so downscale and re-encode as JPEG before
+    # embedding or the compliance PDF balloons to 40MB+.
+    img = PILImage.open(path).convert("RGB")
+    w, h = img.size
+    if max(w, h) > max_dim:
+        scale = max_dim / max(w, h)
+        img = img.resize((max(1, int(w * scale)), max(1, int(h * scale))), PILImage.LANCZOS)
+    out_path = os.path.join(OUT_DIR, "_cmp_" + os.path.splitext(os.path.basename(path))[0] + ".jpg")
+    img.save(out_path, "JPEG", quality=quality)
+    return out_path
+
 def fitted_image(path):
-    w, h = PILImage.open(path).size
+    cpath = compressed(path)
+    w, h = PILImage.open(cpath).size
     ratio = h / w
     if MAX_W * ratio <= MAX_H:
         draw_w, draw_h = MAX_W, MAX_W * ratio
     else:
         draw_w, draw_h = MAX_H / ratio, MAX_H
-    return RLImage(path, width=draw_w, height=draw_h)
+    return RLImage(cpath, width=draw_w, height=draw_h)
 
 NAVY = colors.HexColor("#1b2027")
 BLUE = colors.HexColor("#33719f")
@@ -224,9 +238,10 @@ for num, headline, body in post_blocks:
     flow.append(Paragraph(f"Post {num}: all {len(slide_paths)} carousel slides", styles["CPH1"]))
     slide_w = 3.1 * inch
     for i, sp in enumerate(slide_paths):
-        w, h = PILImage.open(sp).size
+        cpath = compressed(sp, max_dim=700)
+        w, h = PILImage.open(cpath).size
         flow.append(Paragraph(f"Slide {i + 1} of {len(slide_paths)}", styles["CPMeta"]))
-        flow.append(RLImage(sp, width=slide_w, height=slide_w * h / w))
+        flow.append(RLImage(cpath, width=slide_w, height=slide_w * h / w))
         flow.append(Spacer(1, 10))
     out_path = os.path.join(OUT_DIR, f"05_post_{n:02d}.pdf")
     build_doc(out_path, flow)

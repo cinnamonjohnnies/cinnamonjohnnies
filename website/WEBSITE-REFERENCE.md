@@ -10,103 +10,151 @@ regenerating.
 
 ## 1. Design guidelines
 
+As of 2026-09-23 the site runs on the **"Checkpoint Planning" Claude
+Design System** that Scott built (a Claude Design System artifact),
+captured from checkpointplanning.com's real computed styles plus his
+logo, icon, and photography files. That system is the source of truth
+for brand decisions going forward, this section mirrors it. If the two
+ever disagree, treat the design system as authoritative and update this
+file.
+
 ### Colors
 
-Defined as CSS custom properties in `website/styles.css`:
+Defined as CSS custom properties in `website/styles.css`, names match
+the design system's tokens 1:1:
 
 | Token | Hex | Use |
 |---|---|---|
-| `--navy-900` | `#1b2027` | Darkest background (footer, dark sections) |
-| `--navy-800` | `#252b33` | Header background |
-| `--navy-700` | `#394452` | Secondary dark text/backgrounds |
-| `--teal-700` | `#285d88` | Primary brand blue (despite the variable name, this is blue not teal, left over from an earlier palette) |
-| `--teal-600` | `#33719f` | Blue, links/accents |
-| `--teal-500` | `#4c8cbe` | Lighter blue |
-| `--teal-300` | `#9cc4e2` | Light blue, text on dark backgrounds |
-| `--teal-100` | `#e7eff6` | Palest blue, section backgrounds |
-| `--gold-500` | `#c8963e` | CTA accent, primary button color |
-| `--gold-600` | `#b07f2c` | Gold hover state |
-| `--ink` | `#232a30` | Body text |
-| `--ink-soft` | `#57626c` | Secondary/muted text |
-| `--paper` | `#ffffff` | White |
-| `--paper-alt` | `#f5f7f9` | Off-white section background |
-| `--border` | `#dde3e9` | Hairline borders |
+| `--surface-000` | `#ffffff` | White, cards, the header bar |
+| `--surface-100` | `#f2f2f2` | Page background behind content sections |
+| `--black` | `#000000` | Full-bleed dark bands (hero overlay, Strategy panel, closing CTA), primary button fill |
+| `--slate` | `#333c44` | Secondary button fill on black bands |
+| `--charcoal` | `#3e3e3e` | Compliance footer background |
+| `--ink` | `#1a1b1c` | Headings and body text on white/surface-100 |
+| `--ink-body` | `#333333` | Long-form paragraph text |
+| `--ink-muted` | `#5d5d5d` | Supporting copy, captions |
+| `--on-dark` | `#ffffff` | Text on black, slate, charcoal |
+| `--on-dark-muted` | `#e3e3e3` | Disclosure/legal text on charcoal |
+| `--on-dark-subtle` | `#c2c2c2` | Small print on black |
+| `--teal` | `#2e86ab` | The one brand accent color, icons, print headings, graphic accents. Not for body-size text on white (clears 3:1, not 4.5:1) |
+| `--link` | `#236a88` | Dark teal, links and current-page nav on light backgrounds |
+| `--link-on-dark` | `#7cc3df` | Light teal, links on black/slate/charcoal, including the compliance footer |
 
-Palette was deliberately built with no green, an earlier version used
-green/teal and was recolored to this navy/blue/gold system to match
-Scott's real branding. Gold is used sparingly, CTA buttons and small
-accent rules only, never as a large fill.
+Monochrome first, one accent. The old navy/blue/gold palette (invented
+early in this project before Scott's real brand assets were available)
+is retired. Photography (real roads and paths at golden hour) now
+supplies the warmth the old gradient heroes were standing in for; the
+UI itself stays neutral black/white/gray plus the single teal accent.
 
 ### Typography
 
-- **Headings and body copy**: Georgia / Iowan Old Style (serif), set on
-  `body`. This is the site's primary reading typeface.
-- **UI chrome**: Helvetica Neue / Arial (sans), used for navigation,
-  buttons, labels, eyebrows, form fields, and anything functional
-  rather than editorial.
-- This serif/sans split is a deliberate pairing (editorial warmth for
-  content, clean functional sans for interface), keep it if redesigning
-  rather than moving everything to one typeface.
+- **Montserrat** (400/700): headings and body text, the site's primary
+  typeface, loaded via Google Fonts.
+- **Roboto** (400/700): buttons, the lede line under hero headlines.
+- **Roboto Condensed**: audience lists and secondary paragraphs.
+- All three loaded in every page's `<head>` via a Google Fonts link
+  (`Montserrat:wght@400;700&Roboto:wght@400;700&Roboto+Condensed`).
+- Print/PDF pieces (checklists, one-pagers) use a different system:
+  Produkt serif for titles in teal, Lato italic for subtitles, Myriad
+  Pro for small print. Not used on the website itself.
 
 ### Logo and imagery
 
-- `website/assets/checkpoint-logo-full.png`, full lockup (mark +
-  wordmark).
-- `website/assets/checkpoint-logo-mark.png`, mark only. Used inverted
-  (white) on dark backgrounds throughout.
-- `website/assets/crpc-badge.png`, CRPC™ credential badge, used on About.
-- `website/assets/scott-marcoe.jpg`, current headshot, the only
-  photography asset on the site currently.
-- No stock photography anywhere on the site by design, every image is
-  either the logo, the badge, or an actual photo of Scott.
+- `website/assets/checkpoint-logo-black.png` (600x150), full lockup,
+  black, for light backgrounds.
+- `website/assets/checkpoint-logo-white.png`, same lockup in white, for
+  dark backgrounds.
+- `website/assets/checkpoint-mark-black.png` /
+  `checkpoint-mark-white.png`, mark only (circular map-pin-and-road
+  icon), for avatars/favicons/tight spaces.
+- Never recolor (not even teal), stretch, redraw, or place the logo on
+  busy photography. Black version on white/surface-100 only, white
+  version on black/slate/charcoal only, nothing in between.
+- `website/assets/icons/`, five solid teal Checkpoint Strategy phase
+  icons: `where-we-begin-pin.png`, `identify-protect-shield.png`,
+  `plot-checkpoints-path.png`, `implement-check.png`,
+  `track-reset-cycle.png`. Flat teal with white cut-outs, shown around
+  40px tall, always in that phase order, never recolored.
+- `website/assets/photography/`, real photography, two kinds:
+  - **Landscapes** (roads and paths, mostly golden hour): the brand's
+    core transition metaphor, used for hero and page-hero backgrounds
+    with a dark overlay so headline text stays legible. Current set:
+    `sunrise-oak-path.jpg`, `redwood-road-light.jpg`,
+    `winding-vineyard-road.jpg`, `vineyard-path-dusk.jpg`,
+    `desert-road-bw.jpg` (the one black-and-white, used for job-loss).
+  - **Lifestyle** (planning moments): hands on a plan, a closing
+    laptop, a meeting table, a whiteboard, currently uploaded but not
+    yet placed in page body content, a natural next step for About,
+    Services, or Process.
+  - `stress-paper-face-bw.jpg` is the one "moment of change" problem
+    image (job-loss/uncertainty tone), not yet placed, use sparingly
+    and always paired with a path-forward image nearby if added.
+- `website/assets/crpc-badge.png`, CRPC(TM) credential badge, used on
+  About, may be used as supplied, never modified.
+- `website/assets/scott-marcoe.jpg`, current headshot.
 
 ### UI components (from `website/styles.css`)
 
-- **Buttons** (`.btn`): pill-shaped (`border-radius: 999px`), three
-  variants: `.btn-primary` (gold fill, main CTA), `.btn-outline`
-  (transparent, for use on dark backgrounds), `.btn-teal` (blue fill,
-  secondary CTA). Hover state lifts slightly (`translateY(-1px)`).
+- **Buttons** (`.btn` / `.cp-btn`): rectangular, 4px radius, Roboto
+  16/24 label, three fills: **primary** (black fill, white label, use
+  on light sections and over photography), **outline/inverse**
+  (white fill, ink label, the main action on a black band),
+  **teal/secondary** (slate fill, white label, the second action on a
+  black band). One primary action per band. Labels name the offer
+  ("Schedule Your Free Session"), never "Submit" or "Learn more",
+  never uppercase.
 - **Header** (`.site-header`): logo left, nav center, phone number +
   primary CTA button right. Includes a hover/focus dropdown
   (`.nav-crs`) for the two Form CRS links (AIC and AAS).
-- **Hero** (`.hero`): large serif headline + lede paragraph on one
-  side, a `.lead-card` (white card, rounded corners, drop shadow)
-  containing the lead-capture form on the other. This pattern repeats
-  on all 4 transition landing pages and the homepage.
-- **5-phase process strip**: used on the homepage, process page, and
-  all 4 landing pages, five steps (Where We Begin™, Identify &
-  Protect™, Plot Checkpoints™, Implement™, Track & Reset™),
-  numbered, consistent across every instance. Treat this as a locked
-  component, the five phase names and order are core to the brand
-  ("The Checkpoint Strategy") and used verbatim everywhere.
+- **Hero** (`.hero` / `.page-hero`): full-bleed landscape photography
+  background with a dark gradient/solid overlay, white headline and
+  lede text on top. `.hero` (homepage, Contact, and the 4 landing
+  pages) is two-column with a `.lead-card` (white card, rounded
+  corners) holding the lead form; `.page-hero` (About, Services,
+  Process, Fees) is centered text only, no form.
+- **Strategy Phases** (`.strategy-section` / `.strategy-track` /
+  `.strategy-step`): the five-phase Checkpoint Strategy(TM) on a
+  full-bleed black band, one white `radius-lg` card per phase, each
+  led by its teal phase icon at 40px, then the phase name and a
+  one-line caption. Always all five phases, in order, with their (TM)
+  names exactly as written. Used on the homepage, Process page, and
+  all 4 landing pages. Treat this as a locked component.
 - **Pricing tiers**: three cards (Clarity Session, Full Picture, Legacy
-  Blueprint), each listing what's included, each tier includes
+  Blueprint) on black/slate/charcoal fills, each tier includes
   everything from the tier before it.
 - **FAQ pattern**: question as a heading, answer as a paragraph
-  directly below, no accordion/collapse behavior currently, all
-  answers are always visible.
-- **Footer**: dark navy background, four columns (firm info/address,
-  Life Transitions links, Explore/page links, disclosure text), see
-  Global Elements below for exact content.
+  directly below, no accordion, all answers always visible.
+- **Compliance footer** (`.cp-footer`): charcoal background, the full
+  verbatim disclosure block, see Global Elements below. Distinct from
+  the `.site-footer` firm-info/nav columns above it.
 
 ### Voice and tone
 
 - Direct, calm, plain language, no jargon without explanation.
 - No urgency or pressure language anywhere ("act now," "limited time,"
   etc.), the brand promise is the opposite of that.
+- Hedge outcomes the way a compliant adviser does ("strives to help,"
+  "aims to bring"), never promise results or returns.
 - **No em dashes anywhere**, standing rule for all site copy (see
   `docs/CONTENT-STYLE.md`).
 - First-person from Scott on About, third-person ("Scott helps...")
   elsewhere, this mix is intentional, keep it.
 - "One checkpoint at a time" is the recurring closing line/tagline,
   used at the bottom of nearly every page, treat it as the brand's
-  signature phrase.
+  signature phrase. Primary tagline: "Financial Clarity for Life's
+  Transitions." Secondary: "Financial Clarity for Life's
+  In-Betweens(TM)" (used in the hero eyebrow).
+- Branded framework names (Checkpoint Strategy(TM), Where We Begin(TM),
+  Identify & Protect(TM), Plot Checkpoints(TM), Implement(TM), Track &
+  Reset(TM)) carry the trademark symbol on first use in a piece.
 
 ### Compliance constraints that affect design
 
-- **FINRA disclosure block is required on every page footer** (exact
-  text in Global Elements below), do not shorten, paraphrase, or move
-  it behind a click.
+- **The compliance footer text is used word for word, never edited,
+  shortened, reordered, or paraphrased** (only the copyright year
+  changes). It is longer and more complete than what was on the site
+  before this rebrand, see Global Elements below for the exact text,
+  sourced from the design system's ComplianceFooter component.
 - **Form CRS links** (AIC and AAS) must stay in both the header
   dropdown and the footer on every page.
 - **No client testimonials, no performance claims, no named outside
@@ -115,6 +163,9 @@ accent rules only, never as a large fill.
   already, current copy uses unnamed service areas instead (Trusts &
   Wills, Estate Planning, Charitable Giving, Business Planning & Exit
   Strategy, Tax Planning, Life Insurance).
+- Stock photography (`portrait-woman.jpg` in the design system's
+  Lifestyle group, not currently used on the site) is a model, never
+  present as a client or pair with a testimonial if it's ever used.
 
 ---
 
@@ -149,24 +200,61 @@ own footer nav), generally: Home, About, Services, Our Process, Fees,
 Contact, plus the page's own lead magnet link ("Get the Free Guide" /
 "Get the Free Workbook") on the 4 transition pages.
 
-### Disclosure (footer, column 4, every page)
+### Compliance footer (`.cp-footer`, below the firm-info columns, every page)
 
-> Scott Marcoe offers products and services using the following
-> business names: Checkpoint Planning, Capstone Financial Group,
-> insurance and financial services. Ameritas Investment Company, LLC
-> (AIC), Member FINRA/SIPC, securities and investments. Ameritas
-> Advisory Services, LLC (AAS), investment advisory services. AIC and
-> AAS are not affiliated with Capstone Financial Group. For educational
-> purposes only. Not investment advice.
->
-> Form CRS: Ameritas Investment Company, LLC (AIC) | Ameritas Advisory
-> Services, LLC (AAS)
->
-> © Checkpoint Planning. All rights reserved.
+Reproduced word for word from the design system's ComplianceFooter
+component, sourced from checkpointplanning.com. This replaced the
+shorter disclosure block that was on the site before the 2026-09-23
+rebrand, it is more complete (adds BrokerCheck and CCPA language) and
+must not be edited, shortened, reordered, or paraphrased, only the
+copyright year changes:
 
-(Some pages add: "The opinions voiced in this material are for general
-information only and are not intended to provide specific advice or
-recommendations for any individual.")
+> Check the background of Ameritas Investment Company, LLC or this
+> investment professional on FINRA's BrokerCheck.
+>
+> The content is developed from sources believed to be providing
+> accurate information. The information in this material is not
+> intended as tax or legal advice. Please consult legal or tax
+> professionals for specific information regarding your individual
+> situation. The opinions expressed and material provided are for
+> general information, and should not be considered a solicitation for
+> the purchase or sale of any security.
+>
+> We take protecting your data and privacy very seriously. As of
+> January 1, 2020 the California Consumer Privacy Act (CCPA) suggests
+> the following link as an extra measure to safeguard your data: Do not
+> sell my personal information. (Currently linked to a `mailto:` to
+> Scott as a working placeholder, a dedicated CCPA request page or form
+> would be a cleaner destination, see Updates below.)
+>
+> Copyright [year] Checkpoint Planning(TM).
+>
+> *Representatives offer products and services using the following
+> business names: Checkpoint Planning - insurance and financial
+> services - Capstone Financial Group, insurance and financial services
+> | Ameritas Investment Company, LLC (AIC), Member FINRA/SIPC
+> (finra.org, sipc.org), securities and investments | Additionally
+> Scott Marcoe offers advisory services through Ameritas Advisory
+> Services (AAS). AIC and AAS are not affiliated with Checkpoint
+> Planning - Capstone Financial Group or any other entity mentioned
+> herein.
+>
+> Products and services are limited to residents of states where the
+> representative is registered. This is not an offer of securities in
+> any jurisdiction, nor is it specifically directed to a resident of any
+> jurisdiction. As with any security, request a prospectus from your
+> representative. Read it carefully before you invest or send money. A
+> representative will contact you to provide requested information.
+> Representatives of AIC and AAS do not provide tax or legal advice.
+> Please consult your tax advisor or attorney regarding your situation.
+>
+> Licensed for Insurance and Securities sales in CA.
+
+(This block reads as compliance-approved legal text supplied verbatim
+by the design system; two en dashes appear inside it exactly as
+supplied, that's the source text, not a style-rule violation, the "no
+em dashes" rule governs copy this project writes, not text reproduced
+verbatim from a compliance source.)
 
 ---
 
@@ -974,9 +1062,27 @@ keep Planned / Open trimmed to what's actually still outstanding.
   (targeting, ad copy, budget plan, launch checklist), UTM tracking
   extended to ad-level (`utm_medium`, `utm_content`), LinkedIn Insight
   Tag and custom conversion event added site-wide.
+- **2026-09-23**: Full rebrand to the "Checkpoint Planning" Claude
+  Design System Scott built from the real checkpointplanning.com brand:
+  monochrome + single teal accent palette, Montserrat/Roboto
+  typography, real road/path photography as hero backgrounds, new logo
+  and Strategy phase icon set, and the fuller BrokerCheck/CCPA
+  compliance footer reproduced verbatim. Applied across all 10 pages.
+  Same rebrand extended to the LinkedIn ad creative and post carousels,
+  see `campaign/09-compliance-submission-month1.md`.
 
 ### Planned / open
 
+- **Fresh compliance review required**: this is a full visual rebrand
+  (palette, typography, photography, and a longer, more complete
+  compliance footer), not a tweak. It needs to go back through
+  Ameritas compliance before any of it goes live, the earlier
+  09-21 approval was for the previous navy/gold design and shorter
+  disclosure text.
+- **CCPA opt-out link**: the "Do not sell my personal information" link
+  in the compliance footer currently points to a `mailto:` as a working
+  placeholder. A dedicated CCPA request page or form would be a cleaner
+  destination if Scott wants one.
 - **Root domain migration**: site currently lives at
   `start.checkpointplanning.com`. Decision to swap DNS so it becomes
   the primary `checkpointplanning.com` is intentionally deferred, see
@@ -986,12 +1092,12 @@ keep Planned / Open trimmed to what's actually still outstanding.
   column, across all 10 pages.
 - **Email nurture sequences**: drafted but on hold, follow-up is
   handled manually for now by design, automation is a later phase.
-- **Compliance sign-off**: site content submitted for Ameritas
-  compliance review, confirm final approval status before any paid
-  traffic points at it (see `docs/DEPLOY.md` Step 4/5 checklist).
-- **New creative direction**: LinkedIn campaign visual design (ads,
-  carousel posts) has moved to a separate design project, see
-  `campaign/10-creative-brief-handoff.md`. If that project produces a
-  refreshed visual system, evaluate whether it should extend back to
-  the website (currently no photography beyond one headshot, and the
-  site's HTML/CSS design predates that creative brief).
+- **Lifestyle photography not yet placed**: the design system's
+  planning-moment photos (hands on a plan, whiteboard, meeting table,
+  closing laptop) are pulled into `website/assets/photography/` but
+  not yet placed in any page's body content, a natural next step for
+  About, Services, or Process.
+- **Logo/icon files are PNG, not vector**: per the design system's own
+  open items, they'll blur if enlarged significantly beyond their
+  current size. SVG or AI versions would be worth getting if the logo
+  needs to run larger anywhere (print, a big hero treatment).

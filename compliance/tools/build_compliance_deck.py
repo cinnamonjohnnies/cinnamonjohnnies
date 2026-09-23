@@ -260,6 +260,31 @@ changes_flow.append(Paragraph(
     styles["CPSubtitle"]))
 changes_flow.append(Spacer(1, 8))
 
+changes_flow.append(Paragraph("Compliance feedback addressed in this revision", styles["CPH2"]))
+changes_flow.append(Paragraph(
+    "George's review of the prior submission flagged the phrase &#8220;Member FINRA/SIPC&#8221; as on-page "
+    "credential badge/label text, to be omitted (kept only inside the required disclosure paragraph itself, "
+    "where it's part of the approved verbatim text). Both instances are corrected as of "
+    f"{datetime.date.today().strftime('%B %d, %Y')}:", styles["CPBody"]))
+for b in [
+    "Homepage &amp; 4 landing-page bio card (&#8220;Meet Scott Marcoe&#8221;): the credential pill now reads "
+    "&#8220;Registered through Ameritas Investment Company, LLC&#8221; &mdash; &#8220;Member FINRA/SIPC&#8221; "
+    "removed.",
+    "About page, Credentials section: the card previously labeled &#8220;FINRA/SIPC&#8221; is now labeled "
+    "&#8220;Securities Registration,&#8221; and its text reads &#8220;Registered through Ameritas Investment "
+    "Company, LLC&#8221; &mdash; &#8220;Member FINRA/SIPC&#8221; removed.",
+]:
+    changes_flow.append(Paragraph("&bull;&nbsp;&nbsp;" + b, styles["CPBullet"]))
+changes_flow.append(Paragraph(
+    "George's note also called for FINRA/SIPC links in the disclosure paragraph, a FINRA BrokerCheck link on "
+    "the home and bio pages, and a Form CRS link in the navigation. All three were already in place sitewide "
+    "before this note (FINRA and SIPC each link out inside the footer disclosure paragraph, the BrokerCheck "
+    "line and link appear in the footer on every page including Home and About, and the header's Form CRS "
+    "menu links both the AIC and AAS Form CRS on every page), no change was needed for those three. The "
+    "referenced AIC 1743 guidance was not available to check against directly, flagging it here for Scott to "
+    "confirm against the source document.", styles["CPBody"]))
+changes_flow.append(Spacer(1, 6))
+
 changes_flow.append(Paragraph(
     "Bottom line: the visual refresh on its own (colors, fonts, logo files) would be a fast, low-risk update. "
     "It is bundled here with one substantive change that isn't cosmetic: the footer disclosure text itself was "

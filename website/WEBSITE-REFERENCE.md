@@ -438,8 +438,8 @@ the United States.
 **Licensed, registered, and independently held accountable.**
 - **CRPC™**: Chartered Retirement Planning Counselor, College for
   Financial Planning.
-- **FINRA/SIPC**: Registered through Ameritas Investment Company, LLC,
-  Member FINRA/SIPC.
+- **Securities Registration**: Registered through Ameritas Investment
+  Company, LLC.
 - **Life & Health**: Licensed Life and Health Agent. Insurance License
   #0E59309. Board Member, AISS (Achievement Institute for STEM
   Scholars); Chairman, Marketing Committee.
@@ -1070,9 +1070,23 @@ keep Planned / Open trimmed to what's actually still outstanding.
   compliance footer reproduced verbatim. Applied across all 10 pages.
   Same rebrand extended to the LinkedIn ad creative and post carousels,
   see `campaign/09-compliance-submission-month1.md`.
+- **2026-09-23 (compliance feedback, George)**: "Member FINRA/SIPC"
+  removed from two on-page credential badges, it's a disclosure phrase,
+  not marketing badge text, and stays only inside the required verbatim
+  compliance footer paragraph. Fixed on the homepage/4-landing-page bio
+  card (now reads "Registered through Ameritas Investment Company,
+  LLC") and the About page Credentials section (card relabeled
+  "Securities Registration," same trimmed text). FINRA/SIPC hyperlinks,
+  the FINRA BrokerCheck link, and the Form CRS nav links George also
+  asked for were already in place sitewide, no change needed there.
 
 ### Planned / open
 
+- **AIC 1743 guidance**: George's compliance note referenced "AIC 1743
+  for additional guidance and links" on FINRA/SIPC and BrokerCheck
+  presentation. That source document wasn't available to check against
+  directly, Scott should confirm the current site language and links
+  against it directly with Ameritas.
 - **Fresh compliance review required**: this is a full visual rebrand
   (palette, typography, photography, and a longer, more complete
   compliance footer), not a tweak. It needs to go back through

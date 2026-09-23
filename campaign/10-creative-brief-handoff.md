@@ -1,11 +1,22 @@
 # Creative Brief: LinkedIn Month 1 Visual Design
 
-Handoff document for a separate design project. This repo (and the
-Claude Code session behind it) stays focused on strategy, the website,
-technical flow (tracking, compliance PDF generation, deployment), and
-LinkedIn campaign mechanics. The actual visual design of the ad and
-carousel creative moves to a dedicated design tool/project from here,
-this brief is what that project needs to pick up cleanly.
+**Superseded 2026-09-23.** Scott built a real "Checkpoint Planning"
+Claude Design System from checkpointplanning.com's actual brand (colors,
+logo, icons, and real photography), and that's now applied across the
+website and this campaign's creative, see
+`website/WEBSITE-REFERENCE.md` for the current brand system and
+`campaign/assets/ad-creatives/` and `campaign/assets/post-carousels/`
+for the rebuilt, photo-forward creative. The "Brand system" section
+below describes the earlier invented navy/gold palette and is now
+stale, kept for history rather than deleted. The segment-by-segment
+emotional direction further down is still a useful reference for future
+creative decisions, that guidance doesn't depend on the old palette.
+
+Original framing (now moot, the design system resolved this): handoff
+document for a separate design project, so this repo could stay focused
+on strategy, the website, and campaign mechanics while visual design
+moved to a dedicated design tool. That's no longer necessary since the
+design system provided real assets to build from directly.
 
 ## Why this brief exists
 

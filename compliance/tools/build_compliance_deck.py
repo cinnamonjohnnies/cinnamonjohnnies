@@ -26,12 +26,11 @@ WEB = os.path.join(ROOT, "website")
 OUT_DIR = os.path.join(ROOT, "compliance", "_build")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-NAVY = colors.HexColor("#1b2027")
-BLUE = colors.HexColor("#33719f")
-BLUE_DARK = colors.HexColor("#285d88")
-GRAY = colors.HexColor("#57626c")
-LIGHT = colors.HexColor("#e7eff6")
-GOLD = colors.HexColor("#c8963e")
+NAVY = colors.HexColor("#000000")
+BLUE_DARK = colors.HexColor("#3e3e3e")  # charcoal
+TEAL = colors.HexColor("#2e86ab")
+GRAY = colors.HexColor("#5d5d5d")
+LIGHT = colors.HexColor("#f2f2f2")
 
 styles = getSampleStyleSheet()
 styles.add(ParagraphStyle(name="CPTitle", fontName="Helvetica-Bold", fontSize=26, leading=32, textColor=NAVY, spaceAfter=10))
@@ -39,11 +38,12 @@ styles.add(ParagraphStyle(name="CPSubtitle", fontName="Helvetica", fontSize=13, 
 styles.add(ParagraphStyle(name="CPSectionDivider", fontName="Helvetica-Bold", fontSize=28, leading=34, textColor=colors.white, alignment=TA_CENTER))
 styles.add(ParagraphStyle(name="CPSectionSub", fontName="Helvetica", fontSize=12, leading=17, textColor=colors.white, alignment=TA_CENTER, spaceBefore=10))
 styles.add(ParagraphStyle(name="CPH1", fontName="Helvetica-Bold", fontSize=17, leading=21, textColor=NAVY, spaceBefore=14, spaceAfter=8))
-styles.add(ParagraphStyle(name="CPH2", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=BLUE_DARK, spaceBefore=10, spaceAfter=6))
-styles.add(ParagraphStyle(name="CPBody", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#232a30"), spaceAfter=7))
-styles.add(ParagraphStyle(name="CPBullet", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#232a30"), leftIndent=14, spaceAfter=4, bulletIndent=2))
-styles.add(ParagraphStyle(name="CPItalic", fontName="Helvetica-Oblique", fontSize=10.5, leading=15, textColor=BLUE_DARK, spaceAfter=8, leftIndent=10, borderColor=BLUE, borderWidth=0, backColor=LIGHT))
+styles.add(ParagraphStyle(name="CPH2", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=TEAL, spaceBefore=10, spaceAfter=6))
+styles.add(ParagraphStyle(name="CPBody", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#1a1b1c"), spaceAfter=7))
+styles.add(ParagraphStyle(name="CPBullet", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#1a1b1c"), leftIndent=14, spaceAfter=4, bulletIndent=2))
+styles.add(ParagraphStyle(name="CPItalic", fontName="Helvetica-Oblique", fontSize=10.5, leading=15, textColor=TEAL, spaceAfter=8, leftIndent=10, borderColor=TEAL, borderWidth=0, backColor=LIGHT))
 styles.add(ParagraphStyle(name="CPMeta", fontName="Helvetica", fontSize=9.5, leading=13, textColor=GRAY))
+styles.add(ParagraphStyle(name="CPChangeFlag", fontName="Helvetica-Bold", fontSize=10.5, leading=15, textColor=colors.white, spaceAfter=6, leftIndent=8, rightIndent=8, spaceBefore=4, backColor=NAVY, borderPadding=8))
 styles.add(ParagraphStyle(name="CPFooterNote", fontName="Helvetica-Oblique", fontSize=8, leading=11, textColor=GRAY))
 
 def md_inline(text):
@@ -71,8 +71,8 @@ def markdown_flowables(md_text, h1_style="CPH1", h2_style="CPH2"):
                     ("FONTNAME", (0,0), (-1,0), "Helvetica-Bold"),
                     ("FONTNAME", (0,1), (-1,-1), "Helvetica"),
                     ("FONTSIZE", (0,0), (-1,-1), 8.5),
-                    ("GRID", (0,0), (-1,-1), 0.5, colors.HexColor("#dde3e9")),
-                    ("ROWBACKGROUNDS", (0,1), (-1,-1), [colors.white, colors.HexColor("#f5f7f9")]),
+                    ("GRID", (0,0), (-1,-1), 0.5, colors.HexColor("#d0d0d0")),
+                    ("ROWBACKGROUNDS", (0,1), (-1,-1), [colors.white, colors.HexColor("#f2f2f2")]),
                     ("VALIGN", (0,0), (-1,-1), "TOP"),
                     ("LEFTPADDING", (0,0), (-1,-1), 5),
                     ("RIGHTPADDING", (0,0), (-1,-1), 5),
@@ -103,7 +103,7 @@ def markdown_flowables(md_text, h1_style="CPH1", h2_style="CPH2"):
             flow.append(Paragraph(md_inline(line[4:]), styles["CPH2"]))
         elif line.strip() == "---":
             flow.append(Spacer(1, 4))
-            flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#dde3e9")))
+            flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#d0d0d0")))
             flow.append(Spacer(1, 6))
         elif line.strip().startswith("- "):
             flow.append(Paragraph("&bull;&nbsp;&nbsp;" + md_inline(line.strip()[2:]), styles["CPBullet"]))
@@ -166,14 +166,19 @@ c.drawString(0.9*inch, H-1.0*inch, "CHECKPOINT PLANNING")
 c.setFont("Helvetica", 10)
 c.drawString(0.9*inch, H-1.25*inch, "Marketing Material Submission for Compliance Review")
 
+c.setFillColor(colors.HexColor("#2e86ab"))
+c.setFont("Helvetica-Bold", 11)
+c.drawString(0.9*inch, H-3.2*inch, "UPDATED SUBMISSION")
+
+c.setFillColor(colors.white)
 c.setFont("Helvetica-Bold", 30)
-c.drawString(0.9*inch, H-3.6*inch, "New Marketing Material")
+c.drawString(0.9*inch, H-3.6*inch, "Marketing Material")
 c.setFont("Helvetica-Bold", 30)
 c.drawString(0.9*inch, H-4.15*inch, "Compliance Review Package")
 
-c.setFillColor(colors.HexColor("#9cc4e2"))
+c.setFillColor(colors.HexColor("#7cc3df"))
 c.setFont("Helvetica", 13)
-_subtitle = "Website (10 pages) and 3 new lead magnets"
+_subtitle = "Website rebrand (10 pages) — resubmission, supersedes the 2026-09-21 approval"
 if INCLUDE_EMAILS:
     _subtitle += ", and 4 email nurture sequences"
 c.drawString(0.9*inch, H-4.7*inch, _subtitle)
@@ -184,7 +189,7 @@ c.drawString(0.9*inch, 1.6*inch, "SUBMITTED BY")
 c.setFont("Helvetica", 11)
 c.drawString(0.9*inch, 1.38*inch, "Scott Marcoe, CRPC™  —  Founder & Financial Planner, Checkpoint Planning")
 c.setFont("Helvetica", 9.5)
-c.setFillColor(colors.HexColor("#9cc4e2"))
+c.setFillColor(colors.HexColor("#7cc3df"))
 c.drawString(0.9*inch, 1.18*inch, "Checkpoint Planning — Capstone Financial Group | Ameritas Investment Company, LLC (AIC), Member FINRA/SIPC")
 c.drawString(0.9*inch, 1.02*inch, "Ameritas Advisory Services, LLC (AAS)  |  scott@checkpointplanning.com  |  (949) 702-0139")
 
@@ -201,8 +206,10 @@ c.save()
 summary_flow = []
 summary_flow.append(Paragraph("What's in This Package", styles["CPTitle"]))
 summary_flow.append(Paragraph(
-    "This package contains every piece of new marketing material for the Checkpoint Planning lead-generation "
-    "expansion, submitted together for a single compliance review pass.", styles["CPSubtitle"]))
+    "This is an updated submission. It replaces the version approved on September 21, 2026: the website was "
+    "fully rebranded to Scott's real Checkpoint Planning brand system, and this package captures the site as it "
+    "renders live today. See “Summary of Material Changes,” immediately following this page, for exactly what "
+    "changed and what didn't.", styles["CPSubtitle"]))
 summary_flow.append(Spacer(1, 10))
 
 summary_items = [
@@ -220,7 +227,7 @@ for h, body in summary_items:
     summary_flow.append(Spacer(1, 4))
 
 summary_flow.append(Spacer(1, 10))
-summary_flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#dde3e9")))
+summary_flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#d0d0d0")))
 summary_flow.append(Spacer(1, 8))
 summary_flow.append(Paragraph("Planned Distribution", styles["CPH2"]))
 _distribution_text = (
@@ -241,6 +248,84 @@ summary_flow.append(Paragraph(_distribution_text, styles["CPBody"]))
 build_supplement(os.path.join(OUT_DIR, "01_summary.pdf"), [("flowables", summary_flow)])
 
 print("Cover + summary built")
+
+# ---------------------------------------------------------------
+# 2b. Summary of Material Changes since the 2026-09-21 approval
+# ---------------------------------------------------------------
+changes_flow = []
+changes_flow.append(Paragraph("Summary of Material Changes", styles["CPTitle"]))
+changes_flow.append(Paragraph(
+    "What changed on the website since the version approved September 21, 2026, and what didn't. Organized from "
+    "least to most consequential, so it's clear which parts are a quick look and which need a real read.",
+    styles["CPSubtitle"]))
+changes_flow.append(Spacer(1, 8))
+
+changes_flow.append(Paragraph(
+    "Bottom line: the visual refresh on its own (colors, fonts, logo files) would be a fast, low-risk update. "
+    "It is bundled here with one substantive change that isn't cosmetic: the footer disclosure text itself was "
+    "replaced with different, longer wording (see item 3). Please review that text on its own rather than "
+    "assuming it's covered by the visual sign-off.", styles["CPItalic"]))
+changes_flow.append(Spacer(1, 6))
+
+changes_flow.append(Paragraph("1. Cosmetic only — palette, typography, file names", styles["CPH2"]))
+for b in [
+    "Color palette changed from navy/blue/gold to black/charcoal/white with a single teal accent (#2e86ab). "
+    "Nothing said on the page changed, only how it's presented.",
+    "Typography changed from Helvetica-only to Montserrat (headings/body) and Roboto (buttons/lede text), "
+    "loaded via Google Fonts.",
+    "Logo files replaced with current versions of the same lockup and mark, reorganized into new filenames "
+    "(checkpoint-logo-black.png / checkpoint-logo-white.png / checkpoint-mark-black.png / "
+    "checkpoint-mark-white.png). Same logo, not a redesign.",
+    "Buttons, cards, and the five Checkpoint Strategy™ phase icons were restyled to match (rectangular buttons, "
+    "circular teal phase icons). Same elements, same labels, updated appearance only.",
+]:
+    changes_flow.append(Paragraph("&bull;&nbsp;&nbsp;" + b, styles["CPBullet"]))
+changes_flow.append(Spacer(1, 6))
+
+changes_flow.append(Paragraph("2. Material addition — new photography (non-textual)", styles["CPH2"]))
+changes_flow.append(Paragraph(
+    "Every hero and page-hero section on all 10 pages now shows real landscape photography (roads and paths at "
+    "golden hour, one black-and-white image on the Job Loss & Layoff page) behind a dark overlay, where that "
+    "space previously held a solid color or gradient with no photography. No photography beyond Scott's headshot "
+    "appeared anywhere on the site before this rebrand. Nothing about this makes a claim, promise, or performance "
+    "statement, it's a visual addition worth a look precisely because it's new, not because the images themselves "
+    "say anything.", styles["CPBody"]))
+changes_flow.append(Spacer(1, 6))
+
+changes_flow.append(Paragraph(
+    "3. Not cosmetic — the compliance disclosure footer text itself changed", styles["CPChangeFlag"]))
+changes_flow.append(Paragraph(
+    "The footer disclosure block on all 10 pages was replaced with a longer, more complete version, sourced "
+    "verbatim from Scott's own checkpointplanning.com brand materials. This is different wording, not a restyled "
+    "version of the same text. It adds:", styles["CPBody"]))
+for b in [
+    "A BrokerCheck line: “Check the background of Ameritas Investment Company, LLC or this investment "
+    "professional on FINRA's BrokerCheck.”",
+    "CCPA “Do not sell my personal information” language (California Consumer Privacy Act, effective "
+    "January 1, 2020). The link currently points to a mailto: to Scott as a working placeholder, pending a "
+    "dedicated CCPA request page.",
+    "A “Licensed for Insurance and Securities sales in CA” line.",
+    "A revised business-names / broker-dealer disclosure paragraph. It covers the same three entities as "
+    "before (Checkpoint Planning / Capstone Financial Group, Ameritas Investment Company, LLC (AIC), Ameritas "
+    "Advisory Services (AAS)), but the exact wording differs from what's live today. Full text is reproduced "
+    "in the Compliance Notes section at the end of this package.",
+]:
+    changes_flow.append(Paragraph("&bull;&nbsp;&nbsp;" + b, styles["CPBullet"]))
+changes_flow.append(Paragraph(
+    "Please review this text on its own merits rather than treating it as pre-approved because the surrounding "
+    "page looks similar to the version reviewed on 2026-09-21.", styles["CPBody"]))
+changes_flow.append(Spacer(1, 6))
+
+changes_flow.append(Paragraph("4. Unchanged — all page content", styles["CPH2"]))
+changes_flow.append(Paragraph(
+    "No headline, body paragraph, FAQ answer, pricing figure, or service description was rewritten on any of the "
+    "10 pages. The Checkpoint Strategy™ five-phase names and order, the three flat-fee tiers ($1,200 / $2,400 / "
+    "$4,800), the 0.65%–1.25% AUM fee schedule, and every FAQ answer are word-for-word identical to the version "
+    "approved September 21, 2026. The lead magnets (Section 2 of this package) are also unchanged from the "
+    "prior submission, included again here for completeness.", styles["CPBody"]))
+
+build_supplement(os.path.join(OUT_DIR, "01b_material_changes.pdf"), [("flowables", changes_flow)])
+print("Material changes summary built")
 
 # ---------------------------------------------------------------
 # 3. Section divider pages
@@ -417,12 +502,24 @@ _bd_disclosure_scope = "all 10 website pages and all 4 new lead magnets"
 if INCLUDE_EMAILS:
     _bd_disclosure_scope += ", and is referenced in email sequence documentation"
 checklist = [
-    ("Business-name & broker-dealer disclosure",
-     f"Present in the footer of {_bd_disclosure_scope}: "
-     "“Scott Marcoe offers products and services using the following business names: Checkpoint "
-     "Planning — Capstone Financial Group, insurance and financial services | Ameritas Investment Company, LLC "
-     "(AIC), Member FINRA/SIPC, securities and investments | Ameritas Advisory Services, LLC (AAS), investment "
-     "advisory services. AIC and AAS are not affiliated with Capstone Financial Group.”"),
+    ("Business-name & broker-dealer disclosure — CHANGED, new wording",
+     f"Present in the footer of {_bd_disclosure_scope}. As of this submission, reads: "
+     "“Representatives offer products and services using the following business names: Checkpoint Planning - "
+     "insurance and financial services - Capstone Financial Group, insurance and financial services | Ameritas "
+     "Investment Company, LLC (AIC), Member FINRA/SIPC (finra.org, sipc.org), securities and investments | "
+     "Additionally Scott Marcoe offers advisory services through Ameritas Advisory Services (AAS). AIC and AAS "
+     "are not affiliated with Checkpoint Planning - Capstone Financial Group or any other entity mentioned "
+     "herein.” This wording replaces the shorter version approved 2026-09-21, see Summary of Material Changes."),
+    ("BrokerCheck line — NEW",
+     "Added to the footer of all 10 website pages: “Check the background of Ameritas Investment Company, LLC "
+     "or this investment professional on FINRA's BrokerCheck.” Did not appear in the 2026-09-21 version."),
+    ("CCPA notice — NEW",
+     "Added to the footer of all 10 website pages: CCPA “Do not sell my personal information” language "
+     "(effective January 1, 2020). The link currently points to a mailto: to Scott as a working placeholder "
+     "pending a dedicated CCPA request page. Did not appear in the 2026-09-21 version."),
+    ("State-licensing line — NEW",
+     "Added to the footer of all 10 website pages: “Licensed for Insurance and Securities sales in CA.” Did "
+     "not appear in the 2026-09-21 version."),
     ("Form CRS links",
      "Added to the main navigation (a “Form CRS” menu) and the footer of every website page, linking directly to "
      "the AIC Form CRS (ameritas.com/OCM/GetFile?doc=567904) and AAS Form CRS (ameritas.com/OCM/GetFile?doc=567905)."),
@@ -453,19 +550,6 @@ for h, body in checklist:
     notes_flow.append(Paragraph(body, styles["CPBody"]))
     notes_flow.append(Spacer(1, 3))
 
-notes_flow.append(Spacer(1, 10))
-notes_flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#dde3e9")))
-notes_flow.append(Spacer(1, 8))
-notes_flow.append(Paragraph("Reviewer Sign-Off", styles["CPH2"]))
-notes_flow.append(Paragraph(
-    "Reviewed by: _______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ______________", styles["CPBody"]))
-notes_flow.append(Paragraph(
-    "□ Approved as submitted &nbsp;&nbsp;&nbsp; □ Approved with changes (noted below) &nbsp;&nbsp;&nbsp; □ Not approved",
-    styles["CPBody"]))
-notes_flow.append(Spacer(1, 6))
-notes_flow.append(Paragraph("Notes:", styles["CPBody"]))
-notes_flow.append(Spacer(1, 60))
-
 build_supplement(os.path.join(OUT_DIR, "09_compliance_notes.pdf"), [("flowables", notes_flow)])
 print("Compliance notes page built")
 
@@ -487,6 +571,7 @@ def add(path, bookmark=None, parent=None, level_kwargs=None):
 
 add(cover_path)
 add(os.path.join(OUT_DIR, "01_summary.pdf"), "Submission Summary")
+add(os.path.join(OUT_DIR, "01b_material_changes.pdf"), "Summary of Material Changes")
 
 website_bm = add(os.path.join(OUT_DIR, "02_divider_website.pdf"), "1. Website (10 Pages)")
 for (fname, label), pdf_page_paths in zip(pages, website_pdfs):

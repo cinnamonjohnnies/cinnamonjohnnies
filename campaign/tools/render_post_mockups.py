@@ -45,19 +45,19 @@ TEMPLATE = """<!DOCTYPE html><html><head><meta charset="UTF-8" /><style>
           box-shadow:0 1px 2px rgba(0,0,0,0.15); box-sizing:border-box; }
   .header { display:flex; align-items:flex-start; gap:14px; padding:22px 26px 16px 26px; }
   .avatar { width:56px; height:56px; border-radius:50%%; object-fit:cover; flex-shrink:0; }
-  .who .name { font-size:18px; font-weight:700; color:#1b2027; }
+  .who .name { font-size:18px; font-weight:700; color:#000000; }
   .who .headline { font-size:14px; color:#3a444d; max-width:820px; }
   .who .meta { font-size:13px; color:#5a6570; margin-top:2px; }
   .body { padding:0 26px 22px 26px; font-size:17px; line-height:1.6; color:#232a30; white-space:pre-wrap; }
   .body .hashtags { color:#2860a3; }
   .body .disclosure { font-size:13px; color:#5a6570; line-height:1.5; margin-top:16px; }
-  .doc-wrap { position:relative; width:1200px; height:1200px; background:#1b2027; }
+  .doc-wrap { position:relative; width:1200px; height:1200px; background:#000000; }
   .docimg { width:1200px; height:1200px; display:block; }
   .doc-badge { position:absolute; bottom:20px; right:20px; background:rgba(0,0,0,0.55); color:#fff;
     font-size:15px; font-weight:700; padding:6px 14px; border-radius:14px; }
   .doc-chevron { position:absolute; top:50%%; transform:translateY(-50%%); width:44px; height:44px;
     background:rgba(255,255,255,0.9); border-radius:50%%; display:flex; align-items:center; justify-content:center;
-    font-size:20px; color:#1b2027; font-weight:700; }
+    font-size:20px; color:#000000; font-weight:700; }
   .doc-chevron.right { right:20px; }
   .doc-progress { position:absolute; top:0; left:0; right:0; height:4px; display:flex; gap:4px; padding:10px 16px 0 16px; box-sizing:border-box; }
   .doc-progress .seg { flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,0.35); }

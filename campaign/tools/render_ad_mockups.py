@@ -52,8 +52,8 @@ TEMPLATE = """<!DOCTYPE html><html><head><meta charset="UTF-8" />
   .card { width:1200px; background:#ffffff; font-family:"Helvetica Neue", Arial, sans-serif;
           box-shadow:0 1px 2px rgba(0,0,0,0.15); box-sizing:border-box; }
   .header { display:flex; align-items:flex-start; gap:14px; padding:22px 26px 14px 26px; }
-  .logo { width:56px; height:56px; border-radius:50%%; background:#1b2027; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .logo img { width:32px; height:32px; filter:invert(1) brightness(2.1); }
+  .logo { width:56px; height:56px; border-radius:50%%; background:#000000; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .logo img { width:32px; height:32px; }
   .who { line-height:1.35; }
   .who .name { font-size:18px; font-weight:700; color:#1b2027; }
   .who .promoted { font-size:14px; color:#5a6570; display:flex; align-items:center; gap:5px; }
@@ -74,7 +74,7 @@ TEMPLATE = """<!DOCTYPE html><html><head><meta charset="UTF-8" />
 <body>
 <div class="card">
   <div class="header">
-    <div class="logo"><img src="checkpoint-logo-mark.png" /></div>
+    <div class="logo"><img src="../../../website/assets/checkpoint-mark-white.png" /></div>
     <div class="who">
       <div class="name">Checkpoint Planning</div>
       <div class="promoted">&#128274; Promoted</div>

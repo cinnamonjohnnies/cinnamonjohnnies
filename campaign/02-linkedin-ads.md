@@ -32,7 +32,7 @@ A layoff puts a dozen financial decisions in front of you at once, including sev
 
 **CTA button:** Download
 
-**Image concept:** Clean, editorial-style graphic featuring the phrase "One Checkpoint at a Time," in the site's navy/blue palette, abstract and typographic in style.
+**Image concept:** A real photo of Scott beside the headline, on the site's black/charcoal palette with a teal accent rule, matching the Checkpoint Planning design system.
 
 ### Variant A2
 **Intro text:**
@@ -44,7 +44,7 @@ Severance decisions. COBRA vs. marketplace coverage. What to do with your old 40
 
 **CTA button:** Download
 
-**Image concept:** Workbook cover mockup in the site's navy/blue palette, same visual system as A1.
+**Image concept:** Same photo-forward visual system as A1.
 
 ---
 
@@ -62,7 +62,7 @@ Retiring earlier than planned changes the math: Social Security timing, healthca
 
 **CTA button:** Download
 
-**Image concept:** A simple roadmap/milestone graphic echoing the site's "checkpoints" concept, with 30/90/180-day markers, in the brand's analytical, structured visual style.
+**Image concept:** A real photo of Scott beside the headline, black/charcoal background, teal accent rule.
 
 ### Variant A2
 **Intro text:**
@@ -74,7 +74,7 @@ Claiming Social Security at 62 instead of full retirement age can permanently cu
 
 **CTA button:** Download
 
-**Image concept:** A simple stat callout graphic ("62 vs. 70: it's not just about the number") in the brand's blue/charcoal palette, data-forward and typographic.
+**Image concept:** Same photo-forward visual system, with a compact "62 to 70" stat callout in teal alongside the photo.
 
 ---
 
@@ -92,7 +92,7 @@ Divorce brings a wave of financial decisions on top of an already difficult time
 
 **CTA button:** Download
 
-**Image concept:** A simple document/checklist graphic, neutral and professional, in the site's blue/charcoal palette.
+**Image concept:** Same photo-forward visual system, with a compact three-item checklist in teal alongside the photo.
 
 *Note: no strong professional-graph targeting signal exists for this segment on LinkedIn (see `01-audience-targeting.md`). Treat this as a small, capped-budget test rather than a primary placement.*
 
@@ -112,6 +112,6 @@ Received an inheritance? There's rarely a need to decide anything quickly. A fre
 
 **CTA button:** Download
 
-**Image concept:** A calm, unhurried graphic built around the financial-decision framing only, in the site's blue/charcoal palette.
+**Image concept:** Same photo-forward visual system as the other segments.
 
 *Note: same low-priority treatment as Divorce above (small test budget). Facebook is the primary platform for this segment.*

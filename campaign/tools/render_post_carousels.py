@@ -27,40 +27,34 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 CAMPAIGN = os.path.join(ROOT, "campaign")
 OUT_DIR = os.path.join(CAMPAIGN, "assets", "post-carousels")
 CHROME_PATH = os.environ.get("CHROME_PATH", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
-LOGO = "../../linkedin-banner/checkpoint-logo-mark.png"
+LOGO = "../../../../website/assets/checkpoint-mark-white.png"
 HEADSHOT = "../../../../website/assets/scott-marcoe.jpg"
 
-NAVY = "#1b2027"
-BLUE2 = "#285d88"
-BLUE3 = "#33719f"
-GOLD = "#c8963e"
-LIGHT = "#cfe4f4"
+BLACK = "#000000"
+CHARCOAL = "#3e3e3e"
+TEAL = "#2e86ab"
+ON_DARK_MUTED = "#e3e3e3"
+LINK_ON_DARK = "#7cc3df"
+
+FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;600;700&display=swap" rel="stylesheet" />'
 
 BASE_CSS = """
 html, body { margin:0; padding:0; width:1080px; height:1080px; overflow:hidden; }
 .card { width:1080px; height:1080px; position:relative;
-  background: linear-gradient(160deg, %s 0%%, #23364a 42%%, %s 78%%, %s 100%%);
-  font-family:"Helvetica Neue", Arial, sans-serif; box-sizing:border-box; }
-.path { position:absolute; inset:0; opacity:0.12; }
+  background: linear-gradient(160deg, %s 0%%, %s 100%%);
+  font-family:"Roboto", Arial, sans-serif; box-sizing:border-box; }
 .top-row { position:absolute; top:50px; left:56px; right:56px; display:flex; align-items:center;
   justify-content:space-between; z-index:2; }
 .brand { display:flex; align-items:center; gap:10px; }
-.logo-mark { width:34px; height:34px; filter:invert(1) brightness(2.1); }
-.brand-word { color:#fff; font-weight:800; font-size:15px; letter-spacing:0.14em; }
+.logo-mark { width:34px; height:34px; }
+.brand-word { color:#fff; font-family:"Montserrat", Arial, sans-serif; font-weight:800; font-size:15px; letter-spacing:0.14em; }
 .kicker { color:%s; font-weight:700; font-size:15px; letter-spacing:0.12em; text-transform:uppercase; }
 .dots { position:absolute; bottom:46px; left:0; right:0; display:flex; justify-content:center; gap:9px; z-index:2; }
 .dot { width:8px; height:8px; border-radius:50%%; background:rgba(255,255,255,0.35); }
 .dot.on { background:%s; width:22px; border-radius:4px; }
 .pagenum { position:absolute; bottom:46px; right:56px; color:rgba(255,255,255,0.55); font-size:15px; font-weight:600; z-index:2; }
 .rule { width:80px; height:4px; background:%s; border-radius:2px; margin:0 0 26px 0; }
-""" % (NAVY, BLUE2, BLUE3, GOLD, GOLD, GOLD)
-
-PATH_SVG = """<svg class="path" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 50 1010 C 240 1010, 240 730, 420 730 S 600 920, 780 920 S 980 630, 1030 560"
-        fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="1 20" stroke-linecap="round"/>
-  <circle cx="50" cy="1010" r="10" fill="#ffffff"/><circle cx="420" cy="730" r="10" fill="#ffffff"/>
-  <circle cx="780" cy="920" r="10" fill="#ffffff"/><circle cx="1030" cy="560" r="13" fill="%s"/>
-</svg>""" % GOLD
+""" % (BLACK, CHARCOAL, LINK_ON_DARK, TEAL, TEAL)
 
 def esc(t):
     return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -79,15 +73,15 @@ def title_slide(kicker, headline, subtext, n_total, photo=False):
     css = """
     .content { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column;
       align-items:center; justify-content:center; z-index:2; padding:0 96px; box-sizing:border-box; text-align:center; }
-    .headline { color:#fff; font-size:58px; font-weight:800; line-height:1.2; margin:0 0 24px 0; }
+    .headline { color:#fff; font-family:"Montserrat", Arial, sans-serif; font-size:58px; font-weight:800; line-height:1.2; margin:0 0 24px 0; }
     .subtext { color:%s; font-size:26px; line-height:1.5; max-width:820px; }
     .swipe { position:absolute; bottom:100px; left:0; right:0; text-align:center; color:rgba(255,255,255,0.5);
       font-size:16px; letter-spacing:0.08em; z-index:2; }
     .photo-wrap { width:210px; height:210px; border-radius:50%%; overflow:hidden; margin:0 auto 30px auto;
       border:4px solid rgba(255,255,255,0.35); position:relative; }
     .photo-wrap img { width:100%%; height:100%%; object-fit:cover; object-position:center 15%%; }
-    .photo-wrap .tint { position:absolute; inset:0; background:linear-gradient(160deg, rgba(27,32,39,0.15) 0%%, rgba(40,93,136,0.35) 100%%); }
-    """ % LIGHT
+    .photo-wrap .tint { position:absolute; inset:0; background:linear-gradient(160deg, rgba(0,0,0,0.15) 0%%, rgba(46,134,171,0.35) 100%%); }
+    """ % ON_DARK_MUTED
     photo_html = f'<div class="photo-wrap"><img src="{HEADSHOT}" /><div class="tint"></div></div>' if photo else ""
     html = f"""<div class="content">{photo_html}<p class="headline">{headline}</p>
       <p class="subtext">{subtext}</p></div><p class="swipe">SWIPE &rarr;</p>{dots(n_total, 0)}"""
@@ -98,8 +92,8 @@ def content_slide(body, idx, n_total, kicker):
     .content { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; align-items:center;
       justify-content:center; z-index:2; padding:0 100px; box-sizing:border-box; }
     .body { color:#fff; font-size:40px; font-weight:600; line-height:1.45; text-align:left; max-width:880px; }
-    .body b { color:%s; }
-    """ % GOLD
+    .body b { color:%s; font-family:"Montserrat", Arial, sans-serif; }
+    """ % LINK_ON_DARK
     html = f'<div class="content"><p class="body">{body}</p></div>{dots(n_total, idx)}<div class="pagenum">{idx+1}/{n_total}</div>'
     return css, top_row(kicker), html
 
@@ -107,16 +101,16 @@ def close_slide(takeaway, cta, n_total, kicker):
     css = """
     .content { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; flex-direction:column;
       align-items:center; justify-content:center; z-index:2; padding:0 96px; box-sizing:border-box; text-align:center; }
-    .takeaway { color:#fff; font-size:42px; font-weight:800; line-height:1.3; margin:0 0 26px 0; max-width:820px; }
+    .takeaway { color:#fff; font-family:"Montserrat", Arial, sans-serif; font-size:42px; font-weight:800; line-height:1.3; margin:0 0 26px 0; max-width:820px; }
     .cta { color:%s; font-size:24px; line-height:1.5; max-width:760px; }
-    """ % LIGHT
+    """ % ON_DARK_MUTED
     html = f"""<div class="content"><p class="takeaway">&ldquo;{takeaway}&rdquo;</p><div class="rule"></div>
       <p class="cta">{cta}</p></div>{dots(n_total, n_total - 1)}"""
     return css, top_row(kicker), html
 
 def wrap(inner_css, top_row_html, inner_html):
-    return f"""<!DOCTYPE html><html><head><meta charset="UTF-8" /><style>{BASE_CSS}{inner_css}</style></head>
-<body><div class="card">{PATH_SVG}{top_row_html}{inner_html}</div></body></html>"""
+    return f"""<!DOCTYPE html><html><head><meta charset="UTF-8" />{FONT_LINK}<style>{BASE_CSS}{inner_css}</style></head>
+<body><div class="card">{top_row_html}{inner_html}</div></body></html>"""
 
 # ---------------------------------------------------------------------------
 # 12 posts, each a list of slide-builder outputs (css, top_row_html, html)
@@ -215,7 +209,7 @@ def render_slide(post_num, slide_idx, css, top_row_html, html, slide_dir):
         browser = p.chromium.launch(executable_path=CHROME_PATH if os.path.exists(CHROME_PATH) else None)
         page = browser.new_page(viewport={"width": 1080, "height": 1080}, device_scale_factor=2)
         page.goto(f"file://{tmp_html}")
-        page.wait_for_timeout(120)
+        page.wait_for_timeout(350)
         page.screenshot(path=raw_path)
         browser.close()
     img = Image.open(raw_path).resize((1080, 1080), Image.LANCZOS)

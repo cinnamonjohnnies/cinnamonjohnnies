@@ -54,22 +54,21 @@ def fitted_image(path):
         draw_w, draw_h = MAX_H / ratio, MAX_H
     return RLImage(cpath, width=draw_w, height=draw_h)
 
-NAVY = colors.HexColor("#1b2027")
-BLUE = colors.HexColor("#33719f")
-BLUE_DARK = colors.HexColor("#285d88")
-GRAY = colors.HexColor("#57626c")
-LIGHT = colors.HexColor("#e7eff6")
-GOLD = colors.HexColor("#c8963e")
+NAVY = colors.HexColor("#000000")
+BLUE_DARK = colors.HexColor("#3e3e3e")
+TEAL = colors.HexColor("#2e86ab")
+GRAY = colors.HexColor("#5d5d5d")
+LIGHT = colors.HexColor("#e3e3e3")
 
 styles = getSampleStyleSheet()
 styles.add(ParagraphStyle(name="CPTitle", fontName="Helvetica-Bold", fontSize=26, leading=32, textColor=NAVY, spaceAfter=10))
 styles.add(ParagraphStyle(name="CPSubtitle", fontName="Helvetica", fontSize=13, leading=18, textColor=GRAY, spaceAfter=6))
 styles.add(ParagraphStyle(name="CPH1", fontName="Helvetica-Bold", fontSize=17, leading=21, textColor=NAVY, spaceBefore=14, spaceAfter=8))
-styles.add(ParagraphStyle(name="CPH2", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=BLUE_DARK, spaceBefore=10, spaceAfter=6))
-styles.add(ParagraphStyle(name="CPBody", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#232a30"), spaceAfter=7))
-styles.add(ParagraphStyle(name="CPBullet", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#232a30"), leftIndent=14, spaceAfter=4))
+styles.add(ParagraphStyle(name="CPH2", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=TEAL, spaceBefore=10, spaceAfter=6))
+styles.add(ParagraphStyle(name="CPBody", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#1a1b1c"), spaceAfter=7))
+styles.add(ParagraphStyle(name="CPBullet", fontName="Helvetica", fontSize=10, leading=14.5, textColor=colors.HexColor("#1a1b1c"), leftIndent=14, spaceAfter=4))
 styles.add(ParagraphStyle(name="CPDisclosure", fontName="Helvetica-Oblique", fontSize=8.5, leading=12.5, textColor=GRAY, spaceBefore=4, spaceAfter=14, leftIndent=10))
-styles.add(ParagraphStyle(name="CPMeta", fontName="Helvetica-Bold", fontSize=9, leading=13, textColor=BLUE_DARK, spaceBefore=2, spaceAfter=2))
+styles.add(ParagraphStyle(name="CPMeta", fontName="Helvetica-Bold", fontSize=9, leading=13, textColor=TEAL, spaceBefore=2, spaceAfter=2))
 
 def esc(t):
     return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -147,7 +146,7 @@ c.drawString(0.9*inch, H-3.5*inch, "LinkedIn Content and Ads")
 c.setFont("Helvetica-Bold", 28)
 c.drawString(0.9*inch, H-4.0*inch, "Month 1 Compliance Submission")
 
-c.setFillColor(colors.HexColor("#9cc4e2"))
+c.setFillColor(colors.HexColor("#7cc3df"))
 c.setFont("Helvetica", 13)
 c.drawString(0.9*inch, H-4.55*inch, "12 organic posts, posting schedule, and ad copy for all 4 segments")
 
@@ -182,7 +181,7 @@ summary_flow = [
         "segment launching immediately (Phase 1 of the budget and testing plan); the other three "
         "are included now so a later phase does not require a second compliance round-trip.", styles["CPBody"]),
     Spacer(1, 10),
-    HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#dde3e9")),
+    HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#d0d0d0")),
     Spacer(1, 8),
     Paragraph("Not included in this submission", styles["CPH2"]),
     Paragraph(
@@ -207,8 +206,8 @@ if schedule_rows:
         ("FONTNAME", (0,0), (-1,0), "Helvetica-Bold"),
         ("FONTNAME", (0,1), (-1,-1), "Helvetica"),
         ("FONTSIZE", (0,0), (-1,-1), 9),
-        ("GRID", (0,0), (-1,-1), 0.5, colors.HexColor("#dde3e9")),
-        ("ROWBACKGROUNDS", (0,1), (-1,-1), [colors.white, colors.HexColor("#f5f7f9")]),
+        ("GRID", (0,0), (-1,-1), 0.5, colors.HexColor("#d0d0d0")),
+        ("ROWBACKGROUNDS", (0,1), (-1,-1), [colors.white, colors.HexColor("#f2f2f2")]),
         ("VALIGN", (0,0), (-1,-1), "MIDDLE"),
         ("LEFTPADDING", (0,0), (-1,-1), 6),
         ("RIGHTPADDING", (0,0), (-1,-1), 6),

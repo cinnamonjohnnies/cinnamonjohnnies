@@ -84,7 +84,7 @@ TEMPLATE = """<!DOCTYPE html><html><head><meta charset="UTF-8" />
   <img class="adimg" src="../ad-creatives/%s" />
   <div class="footer">
     <div class="text">
-      <div class="domain">start.checkpointplanning.com</div>
+      <div class="domain">checkpointplanning.com</div>
       <div class="headline">%s</div>
       <div class="desc">%s</div>
     </div>

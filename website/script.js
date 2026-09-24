@@ -78,9 +78,26 @@ function initLeadForms() {
 
         if (statusEl) {
           statusEl.classList.add("success");
-          statusEl.textContent =
+          const message =
             form.dataset.successMessage ||
             "Thank you. Your request has been received. We will be in touch within one business day.";
+          const guideLink = form.dataset.guideLink;
+          const guideLabel = form.dataset.guideLabel || "Download Your Guide (PDF)";
+          if (guideLink) {
+            statusEl.textContent = "";
+            const msgEl = document.createElement("p");
+            msgEl.textContent = message;
+            const linkEl = document.createElement("a");
+            linkEl.href = guideLink;
+            linkEl.className = "btn btn-primary";
+            linkEl.style.marginTop = "10px";
+            linkEl.style.display = "inline-block";
+            linkEl.textContent = guideLabel;
+            statusEl.appendChild(msgEl);
+            statusEl.appendChild(linkEl);
+          } else {
+            statusEl.textContent = message;
+          }
         }
         form.reset();
 

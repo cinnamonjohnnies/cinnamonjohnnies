@@ -231,9 +231,9 @@ summary_flow.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexCol
 summary_flow.append(Spacer(1, 8))
 summary_flow.append(Paragraph("Planned Distribution", styles["CPH2"]))
 _distribution_text = (
-    "The website is planned to launch at a new subdomain (start.checkpointplanning.com) first, with checkpointplanning.com "
-    "itself unchanged until this material is approved. Lead magnets are offered as gated downloads on their matching landing "
-    "page"
+    "The website is live at checkpointplanning.com (approved by compliance 2026-09-24). Lead magnets are offered as "
+    "gated downloads on their matching landing page, delivered via a direct link to an unlisted resources page on "
+    "successful submission"
 )
 if INCLUDE_EMAILS:
     _distribution_text += "; email sequences are triggered automatically after a download via the firm's email platform"

@@ -20,7 +20,7 @@ before sign-off (see `00-foundations.md`).**
 
 ## Job Loss & Layoff (LinkedIn priority: high)
 
-Destination: `https://start.checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{yyyy-mm}&utm_content=li_a1`
 
 ### Variant A1
 **Intro text:**
@@ -50,7 +50,7 @@ Severance decisions. COBRA vs. marketplace coverage. What to do with your old 40
 
 ## Early Retirement (LinkedIn priority: high)
 
-Destination: `https://start.checkpointplanning.com/early-retirement.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_earlyretirement_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/early-retirement.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_earlyretirement_{yyyy-mm}&utm_content=li_a1`
 
 ### Variant A1
 **Intro text:**
@@ -80,7 +80,7 @@ Claiming Social Security at 62 instead of full retirement age can permanently cu
 
 ## Divorce (LinkedIn priority: low, small test budget only)
 
-Destination: `https://start.checkpointplanning.com/divorce.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_divorce_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/divorce.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_divorce_{yyyy-mm}&utm_content=li_a1`
 
 ### Variant A1
 **Intro text:**
@@ -100,7 +100,7 @@ Divorce brings a wave of financial decisions on top of an already difficult time
 
 ## Inheritance & Unexpected Wealth (LinkedIn priority: low, small test budget only)
 
-Destination: `https://start.checkpointplanning.com/inheritance.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_inheritance_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/inheritance.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_inheritance_{yyyy-mm}&utm_content=li_a1`
 
 ### Variant A1
 **Intro text:**

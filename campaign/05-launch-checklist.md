@@ -15,8 +15,7 @@ again before each new segment/platform combo launches in Phase 2/3.
 
 ## 2. Site & tracking readiness
 
-- [ ] The site is live at its launch URL (start.checkpointplanning.com
-      or wherever it ended up per `docs/DEPLOY.md`) and the specific
+- [ ] The site is live at `checkpointplanning.com` and the specific
       landing page for this segment loads correctly
 - [ ] `LEAD_WEBHOOK_URL` in `website/script.js` is set to the real Apps
       Script deployment URL (not the placeholder), see `docs/SETUP.md`

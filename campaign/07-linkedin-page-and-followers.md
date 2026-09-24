@@ -58,8 +58,7 @@ Life Transition Planning, Career Transition Planning, Estate Planning
 Coordination, Fiduciary Financial Advisor, Wealth Management, Tax
 Planning Coordination, Insurance Planning
 
-**Website:** `https://start.checkpointplanning.com` (update to the root
-domain once it's live there, see `docs/DEPLOY.md`)
+**Website:** `https://checkpointplanning.com`
 
 **Banner image:** built and ready at `website/assets/linkedin-banner.png`
 (1128x191, LinkedIn's exact Page banner size), the site's hero gradient

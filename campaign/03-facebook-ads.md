@@ -25,7 +25,7 @@ before sign-off (see `00-foundations.md`).**
 
 ## Divorce (Facebook priority: high, primary platform for this segment)
 
-Destination: `https://start.checkpointplanning.com/divorce.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_divorce_{yyyy-mm}&utm_content=fb_a1`
+Destination: `https://checkpointplanning.com/divorce.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_divorce_{yyyy-mm}&utm_content=fb_a1`
 
 ### Variant A1
 **Primary text:**
@@ -55,7 +55,7 @@ A settlement's headline number isn't the same as its real, after-tax value. Befo
 
 ## Inheritance & Unexpected Wealth (Facebook priority: high, primary platform for this segment)
 
-Destination: `https://start.checkpointplanning.com/inheritance.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_inheritance_{yyyy-mm}&utm_content=fb_a1`
+Destination: `https://checkpointplanning.com/inheritance.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_inheritance_{yyyy-mm}&utm_content=fb_a1`
 
 ### Variant A1
 **Primary text:**
@@ -85,7 +85,7 @@ Inherited an IRA? The distribution rules depend on your relationship to the orig
 
 ## Job Loss & Layoff (Facebook priority: moderate, splits budget with LinkedIn)
 
-Destination: `https://start.checkpointplanning.com/job-loss.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_jobloss_{yyyy-mm}&utm_content=fb_a1`
+Destination: `https://checkpointplanning.com/job-loss.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_jobloss_{yyyy-mm}&utm_content=fb_a1`
 
 ### Variant A1
 **Primary text:**
@@ -115,7 +115,7 @@ Not every decision needs to happen this week. A free workbook to help you organi
 
 ## Early Retirement (Facebook priority: moderate, splits budget with LinkedIn)
 
-Destination: `https://start.checkpointplanning.com/early-retirement.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_earlyretirement_{yyyy-mm}&utm_content=fb_a1`
+Destination: `https://checkpointplanning.com/early-retirement.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=cp_earlyretirement_{yyyy-mm}&utm_content=fb_a1`
 
 ### Variant A1
 **Primary text:**

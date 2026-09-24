@@ -150,7 +150,7 @@ morning light, a single grounded figure, negative space, rather than
 busy financial iconography.
 
 **Approved copy, A1**
-Destination: `https://start.checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{yyyy-mm}&utm_content=li_a1`
 - Intro text: "A layoff puts a dozen financial decisions in front of you at once, including severance, COBRA, and your old 401(k), usually the week you can least afford to rush them. Get a free 90-day workbook built to help you slow down and know what to do first."
 - Headline: "Just Lost Your Job? Get a Clear 90-Day Plan."
 - Description: "Free workbook + a complimentary planning session. No cost, no obligation."
@@ -173,7 +173,7 @@ in the design, but it shouldn't be the whole visual, it's the proof, not
 the hook.
 
 **Approved copy, A1**
-Destination: `https://start.checkpointplanning.com/early-retirement.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_earlyretirement_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/early-retirement.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_earlyretirement_{yyyy-mm}&utm_content=li_a1`
 - Intro text: "Retiring earlier than planned changes the math: Social Security timing, healthcare before Medicare, pension elections, and portfolio longevity. Before you commit to a date, get the free Early Retirement Checkpoint Guide and pressure-test the plan."
 - Headline: "Retiring Early? Make Sure Your Money Can Too."
 - Description: "Free guide + a complimentary session with a CRPC(TM) planner."
@@ -195,7 +195,7 @@ single calm, protective visual detail (closed door, steady hands, soft
 light) says more than a bulleted list.
 
 **Approved copy, A1**
-Destination: `https://start.checkpointplanning.com/divorce.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_divorce_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/divorce.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_divorce_{yyyy-mm}&utm_content=li_a1`
 - Intro text: "Divorce brings a wave of financial decisions on top of an already difficult time: settlement analysis, QDROs, tax filing status, rebuilding a budget on your own. A free guide on what to understand before you sign anything."
 - Headline: "Financial Clarity Before You Sign a Settlement"
 - Description: "Free Divorce Financial Checkpoint Guide. Confidential."
@@ -212,7 +212,7 @@ wealth-flaunting, and never referencing loss/grief/funeral imagery
 core, a visual that feels like a pause rather than a prompt to act.
 
 **Approved copy, A1**
-Destination: `https://start.checkpointplanning.com/inheritance.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_inheritance_{yyyy-mm}&utm_content=li_a1`
+Destination: `https://checkpointplanning.com/inheritance.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_inheritance_{yyyy-mm}&utm_content=li_a1`
 - Intro text: "Received an inheritance? There's rarely a need to decide anything quickly. A free guide covering inherited IRA rules, tax basics, and the questions worth asking before you invest, spend, or sell."
 - Headline: "Slow Down Before You Decide Anything"
 - Description: "Free Inheritance Checkpoint Guide. No pressure, no obligation."

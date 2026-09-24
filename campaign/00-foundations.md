@@ -60,11 +60,11 @@ utm_content  = {platform-short}_{variant-id}
 hand):
 
 ```
-https://start.checkpointplanning.com/job-loss.html
+https://checkpointplanning.com/job-loss.html
   ?utm_source=linkedin&utm_medium=paid_social
   &utm_campaign=cp_jobloss_2026-10&utm_content=li_a1
 
-https://start.checkpointplanning.com/divorce.html
+https://checkpointplanning.com/divorce.html
   ?utm_source=facebook&utm_medium=paid_social
   &utm_campaign=cp_divorce_2026-10&utm_content=fb_a2
 ```

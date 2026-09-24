@@ -51,8 +51,7 @@ campaign to. This is a one-time setup, not a recurring step.
    - **Page name:** Checkpoint Planning
    - **LinkedIn public URL:** claim `linkedin.com/company/checkpoint-planning`
      if available, otherwise the closest variant
-   - **Website:** `https://checkpointplanning.com` (or the live
-     `start.checkpointplanning.com` URL if that's what's public right now)
+   - **Website:** `https://checkpointplanning.com`
    - **Industry:** Financial Services (or Financial Planning, if offered
      as a more specific option)
    - **Company size:** 1-10 employees, or Self-employed
@@ -157,10 +156,10 @@ Destination URLs, with the current month filled in:
 
 ```
 Variant A1:
-https://start.checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{current-month}&utm_content=li_a1
+https://checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{current-month}&utm_content=li_a1
 
 Variant A2:
-https://start.checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{current-month}&utm_content=li_a2
+https://checkpointplanning.com/job-loss.html?utm_source=linkedin&utm_medium=paid_social&utm_campaign=cp_jobloss_{current-month}&utm_content=li_a2
 ```
 
 Paste in the intro text, headline, and description exactly as written in

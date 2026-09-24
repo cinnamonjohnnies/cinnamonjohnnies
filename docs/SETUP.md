@@ -18,16 +18,23 @@ website/                    Static site (HTML/CSS/JS, no build step)
   early-retirement.html       Early Retirement landing page
   divorce.html                 Divorce landing page
   inheritance.html            Inheritance & Unexpected Wealth landing page
+  resources.html               Unlisted guide-download page (not in nav, noindex)
   styles.css                   Shared brand styles
   script.js                    Lead form handling (posts to Google Sheets)
   assets/                       Your real logo, icon mark, CRPC badge, and headshot
+  lead-magnets/                 Deploy copies of the 4 guide PDFs, resources.html
+                                 links here (same-site relative paths), this is
+                                 what actually needs to be uploaded/hosted
   google-apps-script/Code.gs   Backend script that writes form leads to Google Sheets
 
-lead-magnets/                Downloadable guides used as opt-in incentives
+lead-magnets/                Canonical source: markdown + PDFs, NOT what gets
+                              hosted, this is where you edit guide content
   your-next-checkpoint-job-loss-workbook.pdf   (your existing workbook, reused)
-  early-retirement-checkpoint-guide.md
-  divorce-financial-checkpoint-guide.md
-  inheritance-checkpoint-guide.md
+  early-retirement-checkpoint-guide.md / .pdf
+  divorce-financial-checkpoint-guide.md / .pdf
+  inheritance-checkpoint-guide.md / .pdf
+  tools/build_guide_pdfs.py    Rebuilds the 3 .pdf guides from their .md source,
+                                 then copies all 4 PDFs into website/lead-magnets/
 
 email-nurture/               5-email nurture sequences, one per transition
   job-loss-sequence.md
@@ -40,6 +47,14 @@ prospecting/                 Outbound / referral-partner strategy
 ```
 
 ## 1. Connect the lead form to your Google Sheet
+
+**Currently broken on the live site**: forms show a success message but
+aren't appending rows to the Sheet. That on-page message is not proof of
+delivery (the form posts with `mode: "no-cors"`, so the browser can never
+actually see whether the webhook succeeded). See `docs/DEPLOY.md` Step 2
+for the full troubleshooting checklist (redeploy version, access setting,
+sheet tab name, Executions log, a manual `curl` test), the short version
+below is what a from-scratch connection looks like.
 
 A Google Sheet called **"Checkpoint Planning - Website Leads"** has already
 been created in your Google Drive with the right columns
@@ -90,9 +105,7 @@ Script webhook above. Easiest options:
 - **GitHub Pages:** enable Pages on this repo, pointed at the `website/`
   folder (or a `gh-pages` branch containing its contents).
 
-Once hosted, point `checkpointplanning.com` (or a subdomain like
-`start.checkpointplanning.com` for campaign tracking) at it via your
-domain registrar's DNS settings.
+The site is live at the root domain, `checkpointplanning.com`.
 
 ## 3. Wire up analytics and campaign tracking
 
@@ -108,14 +121,24 @@ snippet to the `<head>` of each HTML file, `script.js` already pushes a
 `lead_form_submit` event to `window.dataLayer` on every successful
 submission if GTM is present.
 
-## 4. Turn the three new guides into designed PDFs
+## 4. The three new guides are now PDFs, and delivery no longer relies on email
 
 `early-retirement-checkpoint-guide.md`, `divorce-financial-checkpoint-guide.md`,
-and `inheritance-checkpoint-guide.md` are written to match the structure and
-tone of your existing "Your Next Checkpoint" workbook. Hand these to
-whoever designed the original workbook (or use the same template) to
-produce matching branded PDFs, then update the corresponding
-`lead_magnet` value and download link on each landing page.
+and `inheritance-checkpoint-guide.md` are now also rendered as branded PDFs
+(`.pdf` next to each `.md`), built with `lead-magnets/tools/build_guide_pdfs.py`.
+They're simple, functional documents matching the site's black/charcoal/teal
+palette, not a hand-designed layout like the original "Your Next Checkpoint"
+workbook. If you'd like them redesigned to match that workbook's exact layout
+more closely later, that's still worth doing, this just makes sure every
+landing page has a real file to deliver in the meantime. Re-run the script
+after editing any of the three `.md` files to regenerate the PDFs.
+
+The site used to promise "check your inbox" after a lead-magnet form, but no
+automation ever actually sent that email, the promise was never fulfilled.
+That's fixed: on a successful submission, the visitor now gets a direct
+download link to their guide on `resources.html`, an unlisted page (not in
+navigation, marked `noindex`) rather than a public guide library. Nothing to
+configure, this is just how delivery works now.
 
 ## 5. Compliance review: do this before going live
 

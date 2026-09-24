@@ -1103,14 +1103,27 @@ keep Planned / Open trimmed to what's actually still outstanding.
   `lead-magnets/tools/build_guide_pdfs.py`, so all four guides have a
   real file to deliver.
 
+- **2026-09-24, resolved**: Google Sheet lead capture root-caused and
+  fixed. Two real misconfigurations on Scott's Apps Script deployment:
+  access was set to "Only myself" instead of "Anyone" (silently
+  rejected every anonymous visitor's submission before the code ever
+  ran, no Executions log entry, no error email, nothing) and the
+  Sheet's tab wasn't named `Sheet1` (what `SHEET_NAME` in `Code.gs`
+  looks for). Confirmed fixed with a direct webhook test (readable
+  `{"result":"success"}` response, row appeared in the Sheet). Also
+  discovered Apps Script's response IS readable cross-origin once
+  access is set to "Anyone" (earlier assumption that this was an
+  unfixable CORS limitation was wrong, it was the access
+  misconfiguration causing the unreadable failure, not a platform
+  limit), so `script.js` was switched from a blind `mode:"no-cors"`
+  fetch to a normal one that reads the actual result: a failed
+  submission now shows the visitor a real error message instead of a
+  false "thank you." Still open: confirming the live site is serving
+  this updated `script.js` and not a stale cached copy, see
+  `docs/DEPLOY.md` Step 2.6.
+
 ### Planned / open
 
-- **Google Sheet lead capture needs Scott to redeploy**: the fix in
-  `google-apps-script/Code.gs` only takes effect once Scott pastes the
-  updated file into his live Apps Script project and pushes a **new
-  deployment version** (not just a save), this can't be done from this
-  repo. Full steps in `docs/DEPLOY.md` Step 2, including a `curl` test
-  to confirm it's actually working before trusting it again.
 - **Three new guide PDFs are functional, not fully designed**: built
   with `lead-magnets/tools/build_guide_pdfs.py` to unblock delivery,
   matches the site's palette but not the original "Your Next Checkpoint"

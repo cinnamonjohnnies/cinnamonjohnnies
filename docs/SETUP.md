@@ -48,13 +48,15 @@ prospecting/                 Outbound / referral-partner strategy
 
 ## 1. Connect the lead form to your Google Sheet
 
-**Currently broken on the live site**: forms show a success message but
-aren't appending rows to the Sheet. That on-page message is not proof of
-delivery (the form posts with `mode: "no-cors"`, so the browser can never
-actually see whether the webhook succeeded). See `docs/DEPLOY.md` Step 2
-for the full troubleshooting checklist (redeploy version, access setting,
-sheet tab name, Executions log, a manual `curl` test), the short version
-below is what a from-scratch connection looks like.
+Fixed as of 2026-09-24: the deployment's access was set to "Only
+myself" instead of "Anyone," and the Sheet's tab wasn't named `Sheet1`.
+`script.js` now also reads the real response from the webhook instead
+of assuming success, so a genuine failure shows the visitor an actual
+error message. See `docs/DEPLOY.md` Step 2 for the full troubleshooting
+checklist if this ever breaks again (redeploy version, access setting,
+sheet tab name, Executions log, a manual `curl` test, checking the live
+site isn't serving a stale cached `script.js`), the short version below
+is what a from-scratch connection looks like.
 
 A Google Sheet called **"Checkpoint Planning - Website Leads"** has already
 been created in your Google Drive with the right columns

@@ -4,7 +4,7 @@
  */
 
 // Replace with the /exec URL you get after deploying Code.gs as a Web App.
-const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwT0EawBH3blI5kcYjvuDawS_e8ssO8TL1U4_GWRW95fNbhC_BN_kMzK8ZO2thJaqk/exec";
+const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxRWMHM-sc8cjGp4-oRTViq3twFTiHHpIfaxwWe4n09kpRH96qqARPGypi-gMQsWeU/exec";
 
 // Replace with the conversion ID from LinkedIn Campaign Manager > Analyze >
 // Conversion Tracking (create a "Lead" conversion action first). The forms
@@ -99,12 +99,20 @@ function initLeadForms() {
 
       try {
         if (!LEAD_WEBHOOK_URL.startsWith("REPLACE_WITH")) {
-          await fetch(LEAD_WEBHOOK_URL, {
+          // Deliberately NOT mode:"no-cors": Apps Script's response IS
+          // readable cross-origin as long as the deployment's access is set
+          // to "Anyone" (confirmed against the live deployment), and reading
+          // it is what lets a real failure show a real error instead of a
+          // false "success" the visitor (and Scott) can't tell is wrong.
+          const res = await fetch(LEAD_WEBHOOK_URL, {
             method: "POST",
-            mode: "no-cors", // Apps Script web apps don't return CORS headers
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(data),
           });
+          const result = await res.json();
+          if (!res.ok || result.result !== "success") {
+            throw new Error(result.error || "Webhook returned an error");
+          }
         }
 
         if (statusEl) {

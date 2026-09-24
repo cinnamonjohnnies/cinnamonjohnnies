@@ -30,42 +30,44 @@ of choice:
 - **S3 + CloudFront:** upload to an S3 bucket configured for static
   website hosting, with `index.html` as the index document.
 
-## Step 2: Connect the lead form (this is currently broken, fix before sharing the link)
+## Step 2: Connect the lead form
 
-Forms currently show a success message in the browser but aren't
-appending rows to the "Checkpoint Planning - Website Leads" Google
-Sheet. That success message is not proof of delivery, the form posts
-with `mode: "no-cors"` (required so the browser doesn't block the
-cross-origin request), which means the page can never actually read
-whether the Apps Script webhook succeeded or failed. The Sheet, not the
-on-page message, is the only real signal.
+The two real misconfigurations that were breaking this (deployment
+access set to "Only myself" instead of "Anyone", and the Sheet's tab not
+being named `Sheet1`) are both fixed as of 2026-09-24, confirmed against
+the live deployment with a direct webhook test. `script.js` now also
+reads the actual response instead of blindly assuming success, so a
+real failure shows the visitor a real error message instead of a false
+"thank you."
 
-To fix it, walk through this in order:
+If lead capture ever breaks again, walk through this in order:
 
 1. **Confirm the deployed Web App is the current code.** In the Google
    Sheet, go to **Extensions → Apps Script**. Paste in the latest
-   `website/google-apps-script/Code.gs` (this repo's version now sends
-   Scott an alert email if a submission ever fails to save, in addition
-   to the row). Then **Deploy → Manage deployments → (pencil/edit icon
-   on the active deployment) → Version: New version → Deploy**. Editing
-   the script alone does **not** update the live `/exec` URL, you must
-   push a new version, this is the single most common reason a working
-   script "stops" working after an edit.
+   `website/google-apps-script/Code.gs` (sends Scott an alert email if a
+   submission ever fails to save, in addition to the row). Then
+   **Deploy → Manage deployments → (pencil/edit icon on the active
+   deployment) → Version: New version → Deploy**. Editing the script
+   alone does **not** update the live `/exec` URL, you must push a new
+   version, this is the single most common reason a working script
+   "stops" working after an edit.
 2. **Confirm access is set to "Anyone."** Same Manage deployments
    dialog, "Who has access" must be **Anyone** (not "Anyone with Google
    account", not restricted), or every anonymous form submission from a
-   site visitor will be silently rejected.
+   site visitor is silently rejected before your code ever runs (no
+   Executions log entry, no error email, nothing, this exact symptom is
+   what happened here).
 3. **Confirm the sheet tab name.** `Code.gs` looks for a tab literally
    named `Sheet1` (the `SHEET_NAME` constant at the top of the file). If
    your tab was renamed, either rename it back to `Sheet1` or edit that
    constant to match, then redeploy (step 1).
 4. **Check the Executions log.** In the Apps Script editor, click
-   **Executions** in the left sidebar. Submit a test lead on the live
-   site, then refresh that log, it shows every `doPost` run and any
-   error, this is the fastest way to see the real failure instead of
-   guessing.
-5. **Test the webhook directly**, bypassing the website entirely (swap
-   in your real `/exec` URL):
+   **Executions** in the left sidebar. Submit a test lead, then refresh
+   that log. Zero entries at all means the request isn't reaching your
+   deployment (steps 1-2), an entry with an error means something inside
+   the script failed (the error text says exactly what).
+5. **Test the webhook directly**, bypassing the website's hosting and
+   caching entirely (swap in your real `/exec` URL):
    ```
    curl -i -X POST "YOUR_EXEC_URL_HERE" \
      -H "Content-Type: text/plain;charset=utf-8" \
@@ -75,6 +77,14 @@ To fix it, walk through this in order:
    HTML login/permission page instead, access isn't set to "Anyone"
    (step 2). If you get a script error, the Executions log (step 4) will
    show exactly which line failed.
+6. **If the direct test works but the live site still doesn't**, the
+   site itself is serving a stale or incorrect `script.js`, not a
+   backend problem. Open `https://checkpointplanning.com/script.js`
+   directly in a browser (or view-source on any page) and check the
+   `LEAD_WEBHOOK_URL` line matches your current deployment exactly. If
+   it doesn't, your host cached an old copy, re-upload and hard-refresh
+   (or test in a private/incognito window) rather than a normal
+   refresh, which can still serve a cached file.
 6. Confirm `website/script.js`'s `LEAD_WEBHOOK_URL` constant matches the
    `/exec` URL from your current active deployment (redeploying
    sometimes issues a new URL depending on deployment type), and

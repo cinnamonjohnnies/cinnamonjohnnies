@@ -21,6 +21,21 @@ function getUtmParam(name) {
   }
 }
 
+function isValidEmail(value) {
+  // Deliberately simple: catches the typos that matter ("name@gmail",
+  // "name@@gmail.com", empty) without rejecting valid-but-unusual real
+  // addresses the way stricter regexes tend to.
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function showFormError(form, statusEl, message, focusField) {
+  if (statusEl) {
+    statusEl.className = "form-status error";
+    statusEl.textContent = message;
+  }
+  if (focusField) focusField.focus();
+}
+
 function initLeadForms() {
   const forms = document.querySelectorAll("form[data-lead-form]");
   forms.forEach((form) => {
@@ -45,6 +60,22 @@ function initLeadForms() {
       const statusEl = form.querySelector(".form-status");
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn ? submitBtn.textContent : "";
+
+      // Required-field validation. The name/email inputs already carry
+      // `required`/`type="email"` for native browser validation, this is a
+      // second check with a clearer, on-brand error message (and it's the
+      // only check that runs at all if a visitor's browser has quirky
+      // native validation support).
+      const nameField = form.querySelector('[name="name"]');
+      const emailField = form.querySelector('[name="email"]');
+      if (nameField && !nameField.value.trim()) {
+        showFormError(form, statusEl, "Please enter your name.", nameField);
+        return;
+      }
+      if (emailField && !isValidEmail(emailField.value.trim())) {
+        showFormError(form, statusEl, "Please enter a valid email address.", emailField);
+        return;
+      }
 
       if (submitBtn) {
         submitBtn.disabled = true;

@@ -1079,20 +1079,19 @@ keep Planned / Open trimmed to what's actually still outstanding.
   "Securities Registration," same trimmed text). FINRA/SIPC hyperlinks,
   the FINRA BrokerCheck link, and the Form CRS nav links George also
   asked for were already in place sitewide, no change needed there.
+- **2026-09-24**: Website approved by Ameritas compliance. The rebrand
+  (palette, typography, photography, fuller compliance footer) and the
+  George's-feedback fixes above are both cleared, the site is
+  compliance-approved as of this date and can go live.
 
 ### Planned / open
 
 - **AIC 1743 guidance**: George's compliance note referenced "AIC 1743
   for additional guidance and links" on FINRA/SIPC and BrokerCheck
   presentation. That source document wasn't available to check against
-  directly, Scott should confirm the current site language and links
-  against it directly with Ameritas.
-- **Fresh compliance review required**: this is a full visual rebrand
-  (palette, typography, photography, and a longer, more complete
-  compliance footer), not a tweak. It needs to go back through
-  Ameritas compliance before any of it goes live, the earlier
-  09-21 approval was for the previous navy/gold design and shorter
-  disclosure text.
+  directly, worth Scott confirming the current site language and links
+  against it directly with Ameritas at some point, though this didn't
+  block the 09-24 approval.
 - **CCPA opt-out link**: the "Do not sell my personal information" link
   in the compliance footer currently points to a `mailto:` as a working
   placeholder. A dedicated CCPA request page or form would be a cleaner

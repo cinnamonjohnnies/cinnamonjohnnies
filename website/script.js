@@ -53,9 +53,20 @@ function initLeadForms() {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Honeypot spam trap, if filled, silently drop the submission.
-      const honeypot = form.querySelector('[name="company_website"]');
-      if (honeypot && honeypot.value) return;
+      // Honeypot spam trap: a field real visitors can't see or reach (off-
+      // screen, tabindex="-1"), so only a bot filling every field blind
+      // would ever populate it. Deliberately named away from anything an
+      // address/company autofill profile would recognize and fill, that
+      // exact bug (a real visitor's browser autofilling this and every
+      // submission silently vanishing with zero feedback) is what broke
+      // lead capture here before. No user-facing message on purpose (don't
+      // tip off bots), but this stays visible in the console so it's never
+      // an invisible, undebuggable dead end again.
+      const honeypot = form.querySelector('[name="hp_check_9f2"]');
+      if (honeypot && honeypot.value) {
+        console.warn("Checkpoint Planning: honeypot field was filled, submission dropped.", honeypot.value);
+        return;
+      }
 
       const statusEl = form.querySelector(".form-status");
       const submitBtn = form.querySelector('button[type="submit"]');

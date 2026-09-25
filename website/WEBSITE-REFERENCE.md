@@ -1118,9 +1118,22 @@ keep Planned / Open trimmed to what's actually still outstanding.
   limit), so `script.js` was switched from a blind `mode:"no-cors"`
   fetch to a normal one that reads the actual result: a failed
   submission now shows the visitor a real error message instead of a
-  false "thank you." Still open: confirming the live site is serving
-  this updated `script.js` and not a stale cached copy, see
-  `docs/DEPLOY.md` Step 2.6.
+  false "thank you."
+- **2026-09-25**: Scott confirmed the live site was serving the correct
+  `script.js` (full delete-and-reupload, ruling out caching) but the
+  live site's own forms still silently did nothing, while the direct
+  webhook test kept succeeding. Root cause: the spam honeypot field was
+  named `company_website`, likely autofilled by the browser (a
+  "company" name in a saved address/business profile) since it's a
+  disguised-but-present, focusable form field, not something a script
+  or human filled deliberately. A filled honeypot makes the JS return
+  immediately with zero UI feedback by design (to not tip off bots),
+  which produces exactly the "nothing happens at all" symptom reported
+  throughout this thread. Renamed the field to `hp_check_9f2` sitewide
+  (nothing an autofill profile would pattern-match) and added a
+  console-only warning when it's ever triggered, so this can't become
+  an invisible dead end again. Not yet confirmed by Scott as the actual
+  cause, next live-site test will confirm or rule it out.
 
 ### Planned / open
 

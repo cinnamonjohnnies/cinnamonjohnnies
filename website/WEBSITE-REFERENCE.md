@@ -1132,8 +1132,11 @@ keep Planned / Open trimmed to what's actually still outstanding.
   throughout this thread. Renamed the field to `hp_check_9f2` sitewide
   (nothing an autofill profile would pattern-match) and added a
   console-only warning when it's ever triggered, so this can't become
-  an invisible dead end again. Not yet confirmed by Scott as the actual
-  cause, next live-site test will confirm or rule it out.
+  an invisible dead end again. **Confirmed**: Scott retested after the
+  fix and the live site now saves leads correctly. Lead capture is
+  fully working end to end as of this date: access setting, sheet name,
+  honeypot autofill collision, and real success/failure messaging are
+  all resolved.
 
 ### Planned / open
 

@@ -5,12 +5,7 @@ presented at SELACO WDB in Cerritos, Tuesdays 2-3pm through October 2026
 (see the flyer, `campaign/assets/financial-education-series-flyer.png`,
 and the RSVP page, `website/financial-education-series.html`).
 
-**Draft copy, pending compliance approval, do not post before sign-off**
-(see `00-foundations.md`), same standing rule as every other post in this
-campaign. This is new territory for compliance to review specifically:
-it names a third-party government workforce agency (SELACO WDB) and an
-in-person public event, neither of which the earlier Month 1 submission
-covered.
+**Compliance approved, ready to post** (per Scott, 2026-09-25).
 
 ## Why these posts, and why Tuesdays
 

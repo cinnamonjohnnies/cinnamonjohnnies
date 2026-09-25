@@ -1199,10 +1199,7 @@ keep Planned / Open trimmed to what's actually still outstanding.
   lead pipeline, no backend changes. Also wrote 5 LinkedIn posts
   promoting it, `campaign/12-workshop-series-promotion.md`, slotted into
   Tuesdays so they don't collide with the existing Month 1 Mon/Wed/Fri
-  calendar. **Not yet submitted for compliance review**, this is new
-  territory (a named third-party government agency, an in-person public
-  event) the earlier Month 1 submission didn't cover, needs its own
-  sign-off before the page goes live or any post publishes.
+  calendar. **Compliance approved** (per Scott, 2026-09-25).
 
 ### Planned / open
 

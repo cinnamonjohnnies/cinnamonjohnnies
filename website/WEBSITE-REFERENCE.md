@@ -1039,6 +1039,61 @@ ready to talk it through.
 
 ---
 
+### Financial Education Series (`financial-education-series.html`)
+
+Not one of the four transition landing pages, a standalone page for a
+real, time-boxed in-person event: a free 4-part workshop series Scott is
+presenting at SELACO WDB (Southeast Los Angeles County Workforce
+Development Board) in Cerritos, Tuesdays 2-3pm through October 2026.
+Sourced from the flyer SELACO produced,
+`campaign/assets/financial-education-series-flyer.png` /
+`website/assets/financial-education-series-flyer.jpg`.
+
+**Hero**
+# Financial Education Series: four free sessions this October in Cerritos.
+Join Scott Marcoe for four insightful 1-hour sessions on the money
+decisions that matter most during a career transition, from the
+psychology of money to a 90-day plan for what comes next. Hosted at
+SELACO WDB, open to the public.
+
+Lead card: **Let Us Know You're Coming**, an optional, low-friction
+interest form (name, email, phone optional, which session(s) optional
+free text), explicitly not a registration requirement, "just show up"
+is the actual policy. Reuses the same lead pipeline as every other form
+(`transition_type` = "Financial Education Series (Workshop)",
+`lead_magnet` = "Financial Education Series RSVP"), no backend changes
+needed.
+
+**Four sessions** (exact dates/topics from the flyer, reproduced
+faithfully): Oct 6 Your Money, Your Picture (psychology of money,
+building a financial snapshot); Oct 13 Managing Debt and Using Credit
+Wisely; Oct 20 Banking, Benefits, and Protecting What You Have
+(including unemployment, COBRA, retirement accounts); Oct 27 Building
+Toward Stability (savings, tax basics, a 90-day plan).
+
+**When and Where**: SELACO WDB, 10900 E. 183rd St., #392, Cerritos, CA
+90703. Includes the flyer's own required disclaimer, reproduced
+verbatim: "Checkpoint Planning is an independent organization and is
+not affiliated with, endorsed by, or associated with the Southeast Los
+Angeles County Workforce Development Board (SELACO WDB) or America's
+Job Center of California (AJCC)." This is page-specific, not part of
+the shared sitewide `cp-footer` block (that block stays identical on
+every page per the standing rule), it only applies where SELACO is
+actually mentioned. The full flyer image is embedded on the page below
+this section.
+
+**Bio**: shortened version of the standard About Your Presenter block,
+links to `about.html` for the full story.
+
+**Closing**: "Come with a question, leave with a plan for the next
+step." Free, open to the public, no registration required.
+
+Linked from the homepage footer's Explore column (not yet added to the
+other 9 pages' footers or the four transition pages, LinkedIn is the
+primary discovery path for this one, per Scott).
+
+---
+
 ## 4. Updates
 
 Running log. Add a dated entry under Completed when something ships,
@@ -1137,6 +1192,17 @@ keep Planned / Open trimmed to what's actually still outstanding.
   fully working end to end as of this date: access setting, sheet name,
   honeypot autofill collision, and real success/failure messaging are
   all resolved.
+- **2026-09-25**: Built `financial-education-series.html`, a standalone
+  page for Scott's free 4-part Financial Education Series at SELACO WDB
+  in Cerritos (Tuesdays 2-3pm, October 2026), sourced from the flyer
+  SELACO produced. Optional low-friction RSVP form reuses the existing
+  lead pipeline, no backend changes. Also wrote 5 LinkedIn posts
+  promoting it, `campaign/12-workshop-series-promotion.md`, slotted into
+  Tuesdays so they don't collide with the existing Month 1 Mon/Wed/Fri
+  calendar. **Not yet submitted for compliance review**, this is new
+  territory (a named third-party government agency, an in-person public
+  event) the earlier Month 1 submission didn't cover, needs its own
+  sign-off before the page goes live or any post publishes.
 
 ### Planned / open
 

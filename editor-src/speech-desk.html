@@ -1,41 +1,41 @@
 <title>Talk Gooder</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
 <style>
 /* Layout: a library of speech cards, and a per speech editor with a sticky timing dock (estimate against that speech's own target window, plus a rehearsal stopwatch) above editable cue lines grouped in sections. */
 :root {
-  --bg: #F7F3EC;
-  --surface: #FFFEFB;
-  --fg: #26211C;
-  --muted: #7B7064;
-  --line: #E4DACA;
-  --accent: #2C6486;
+  --bg: #F4F7FC;
+  --surface: #FFFFFF;
+  --fg: #0B1F44;
+  --muted: #55647F;
+  --line: #DBE3F1;
+  --accent: #1F66DB;
   --accent-fg: #FFFFFF;
-  --spring: #4B7B58;
-  --summer: #A9742A;
-  --fall: #A8512F;
-  --winter: #3F6A8F;
+  --spring: #0A86BD;
+  --summer: #C9501A;
+  --fall: #5B49B8;
+  --winter: #2A4A8F;
   --ok: #2F7A55;
   --warn: #9A6A1A;
   --bad: #A63A30;
   --f-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-head: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-head: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-script: "Newsreader", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #16130F;
-    --surface: #1F1B16;
-    --fg: #EFE8DC;
-    --muted: #A89C8D;
-    --line: #35302A;
-    --accent: #7FB3D5;
-    --accent-fg: #0D1A24;
-    --spring: #8BC79A;
-    --summer: #E0B260;
-    --fall: #E39673;
-    --winter: #8CB6D8;
+    --bg: #081631;
+    --surface: #0F2550;
+    --fg: #EAF0FB;
+    --muted: #9FB3D9;
+    --line: #1F3A6E;
+    --accent: #6FA8FF;
+    --accent-fg: #081631;
+    --spring: #5CCBFF;
+    --summer: #FF9A66;
+    --fall: #B3A4FF;
+    --winter: #8FB0F0;
     --ok: #7CCBA0;
     --warn: #E3B358;
     --bad: #EE8379;
@@ -89,7 +89,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 
 /* Library */
 .home-head { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: flex-end; justify-content: space-between; padding-block: 28px 8px; }
-.home-head h1 { margin: 0; font: 500 40px/1.1 var(--f-head); letter-spacing: -0.015em; }
+.home-head h1 { margin: 0; font: 700 36px/1.1 var(--f-head); letter-spacing: -0.015em; }
 .lede { margin: 6px 0 0; font: italic 400 17px var(--f-script); color: var(--muted); }
 .home-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .panel { margin-top: 14px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; display: grid; gap: 12px; max-width: 760px; }
@@ -415,8 +415,8 @@ body.stage .sec, body.stage .sec:not(.sel) { display: block; }
   <section id="home">
     <header class="home-head">
       <div>
-        <h1>Talk Gooder</h1>
-        <p class="lede">Your speeches, timed and ready to rehearse.</p>
+        <h1>Your speeches</h1>
+        <p class="lede">Timed, tidy and ready to rehearse.</p>
       </div>
       <div class="home-btns">
         <button class="btn primary" id="impBtn" type="button">Upload Speech</button>
